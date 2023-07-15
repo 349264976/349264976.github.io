@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第19章 数据库备份与恢复 | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第19章 数据库备份与恢复1. 物理备份与逻辑备份物理备份：备份数据文件，转储数据库物理文件到某一目录。物理备份恢复速度比较快，但占用空间比较大，MySQL中可以用xtrabackup工具来进行物理备份。 逻辑备份：对数据库对象利用工具进行导出工作，汇总入备份文件内。逻辑备份恢复速度慢，但占用空间小，更灵活。MySQL 中常用的逻辑备份工具为mysqldump。逻辑备份就是备份sql语句，在恢复的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第19章 数据库备份与恢复">
+<meta property="og:url" content="https://349264976.github.io/2023/07/15/%E7%AC%AC19%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/index.html">
+<meta property="og:site_name" content="fuguangmengying">
+<meta property="og:description" content="第19章 数据库备份与恢复1. 物理备份与逻辑备份物理备份：备份数据文件，转储数据库物理文件到某一目录。物理备份恢复速度比较快，但占用空间比较大，MySQL中可以用xtrabackup工具来进行物理备份。 逻辑备份：对数据库对象利用工具进行导出工作，汇总入备份文件内。逻辑备份恢复速度慢，但占用空间小，更灵活。MySQL 中常用的逻辑备份工具为mysqldump。逻辑备份就是备份sql语句，在恢复的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://349264976.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-07-15T11:37:11.000Z">
+<meta property="article:modified_time" content="2023-07-15T12:09:07.984Z">
+<meta property="article:author" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://349264976.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://349264976.github.io/2023/07/15/%E7%AC%AC19%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第19章 数据库备份与恢复',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-15 20:09:07'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第19章 数据库备份与恢复</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-15T12:09:07.984Z" title="更新于 2023-07-15 20:09:07">2023-07-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="第19章 数据库备份与恢复"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="第19章-数据库备份与恢复"><a href="#第19章-数据库备份与恢复" class="headerlink" title="第19章 数据库备份与恢复"></a>第19章 数据库备份与恢复</h3><h4 id="1-物理备份与逻辑备份"><a href="#1-物理备份与逻辑备份" class="headerlink" title="1. 物理备份与逻辑备份"></a><strong>1.</strong> <strong>物理备份与逻辑备份</strong></h4><p><strong>物理备份</strong>：备份数据文件，转储数据库物理文件到某一目录。物理备份恢复速度比较快，但占用空间比较大，MySQL中可以用<code>xtrabackup</code>工具来进行物理备份。</p>
+<p><strong>逻辑备份</strong>：对数据库对象利用工具进行导出工作，汇总入备份文件内。逻辑备份恢复速度慢，但占用空间小，更灵活。MySQL 中常用的逻辑备份工具为<code>mysqldump</code>。逻辑备份就是<code>备份sql语句</code>，在恢复的时候执行备份的sql语句实现数据库数据的重现。</p>
+<h4 id="2-mysqldump实现逻辑备份"><a href="#2-mysqldump实现逻辑备份" class="headerlink" title="2. mysqldump实现逻辑备份"></a><strong>2. mysqldump实现逻辑备份</strong></h4><h5 id="2-1-备份一个数据库"><a href="#2-1-备份一个数据库" class="headerlink" title="2.1 备份一个数据库"></a><strong>2.1</strong> <strong>备份一个数据库</strong></h5><pre><code class="shell">mysqldump –u 用户名称 –h 主机名称 –p密码 待备份的数据库名称[tbname, [tbname...]]&gt; 备份文件名 称.sql
+</code></pre>
+<pre><code class="shell">mysqldump -uroot -p atguigu&gt;atguigu.sql #备份文件存储在当前目录下
+mysqldump -uroot -p atguigudb1 &gt; /var/lib/mysql/atguigu.sql
+</code></pre>
+<h5 id="2-2-备份全部数据库"><a href="#2-2-备份全部数据库" class="headerlink" title="2.2 备份全部数据库"></a><strong>2.2</strong> <strong>备份全部数据库</strong></h5><pre><code class="shell">mysqldump -uroot -pxxxxxx --all-databases &gt; all_database.sql 
+mysqldump -uroot -pxxxxxx -A &gt; all_database.sql
+</code></pre>
+<h5 id="2-3-备份部分数据库"><a href="#2-3-备份部分数据库" class="headerlink" title="2.3 备份部分数据库"></a><strong>2.3</strong> <strong>备份部分数据库</strong></h5><pre><code class="shell">mysqldump –u user –h host –p --databases [数据库的名称1 [数据库的名称2...]] &gt; 备份文件名 称.sql
+</code></pre>
+<pre><code class="shell">mysqldump -uroot -p --databases atguigu atguigu12 &gt;two_database.sql
+mysqldump -uroot -p -B atguigu atguigu12 &gt; two_database.sql
+</code></pre>
+<h5 id="2-4-备份部分表"><a href="#2-4-备份部分表" class="headerlink" title="2.4 备份部分表"></a><strong>2.4</strong> <strong>备份部分表</strong></h5><pre><code class="shell">mysqldump –u user –h host –p 数据库的名称 [表名1 [表名2...]] &gt; 备份文件名称.sql
+</code></pre>
+<pre><code class="shell">mysqldump -uroot -p atguigu book&gt; book.sql
+#备份多张表 
+mysqldump -uroot -p atguigu book account &gt; 2_tables_bak.sql
+</code></pre>
+<h5 id="2-5-备份单表的部分数据"><a href="#2-5-备份单表的部分数据" class="headerlink" title="2.5 备份单表的部分数据"></a><strong>2.5</strong> <strong>备份单表的部分数据</strong></h5><pre><code class="shell">mysqldump -uroot -p atguigu student --where=&quot;id &lt; 10 &quot; &gt; student_part_id10_low_bak.sql
+</code></pre>
+<h5 id="2-6-排除某些表的备份"><a href="#2-6-排除某些表的备份" class="headerlink" title="2.6 排除某些表的备份"></a><strong>2.6</strong> <strong>排除某些表的备份</strong></h5><pre><code class="shell">mysqldump -uroot -p atguigu --ignore-table=atguigu.student &gt; no_stu_bak.sql
+</code></pre>
+<h5 id="2-7-只备份结构或只备份数据"><a href="#2-7-只备份结构或只备份数据" class="headerlink" title="2.7 只备份结构或只备份数据"></a><strong>2.7</strong> <strong>只备份结构或只备份数据</strong></h5><ul>
+<li>只备份结构</li>
+</ul>
+<pre><code class="shell">mysqldump -uroot -p atguigu --no-data &gt; atguigu_no_data_bak.sql
+</code></pre>
+<ul>
+<li>只备份数据</li>
+</ul>
+<pre><code class="shell">mysqldump -uroot -p atguigu --no-create-info &gt; atguigu_no_create_info_bak.sql
+</code></pre>
+<h5 id="2-8-备份中包含存储过程、函数、事件"><a href="#2-8-备份中包含存储过程、函数、事件" class="headerlink" title="2.8 备份中包含存储过程、函数、事件"></a><strong>2.8</strong> <strong>备份中包含存储过程、函数、事件</strong></h5><pre><code class="shell">mysqldump -uroot -p -R -E --databases atguigu &gt; fun_atguigu_bak.sql
+</code></pre>
+<h4 id="3-mysql命令恢复数据"><a href="#3-mysql命令恢复数据" class="headerlink" title="3. mysql命令恢复数据"></a><strong>3. mysql命令恢复数据</strong></h4><pre><code class="shell">mysql –u root –p [dbname] &lt; backup.sql
+</code></pre>
+<h5 id="3-1-单库备份中恢复单库"><a href="#3-1-单库备份中恢复单库" class="headerlink" title="3.1 单库备份中恢复单库"></a><strong>3.1</strong> <strong>单库备份中恢复单库</strong></h5><pre><code class="shell">#备份文件中包含了创建数据库的语句
+mysql -uroot -p &lt; atguigu.sql
+#备份文件中不包含了创建数据库的语句
+mysql -uroot -p atguigu4&lt; atguigu.sql
+</code></pre>
+<h5 id="3-2-全量备份恢复"><a href="#3-2-全量备份恢复" class="headerlink" title="3.2 全量备份恢复"></a><strong>3.2</strong> <strong>全量备份恢复</strong></h5><pre><code class="shell">mysql –u root –p &lt; all.sql
+</code></pre>
+<h5 id="3-3-从全量备份中恢复单库"><a href="#3-3-从全量备份中恢复单库" class="headerlink" title="3.3 从全量备份中恢复单库"></a><strong>3.3</strong> <strong>从全量备份中恢复单库</strong></h5><pre><code class="shell">sed -n &#39;/^-- Current Database: `atguigu`/,/^-- Current Database: `/p&#39; all_database.sql &gt; atguigu.sql 
+#分离完成后我们再导入atguigu.sql即可恢复单个库
+</code></pre>
+<h5 id="3-4-从单库备份中恢复单表"><a href="#3-4-从单库备份中恢复单表" class="headerlink" title="3.4 从单库备份中恢复单表"></a><strong>3.4</strong> <strong>从单库备份中恢复单表</strong></h5><pre><code class="shell">cat atguigu.sql | sed -e &#39;/./&#123;H;$!d;&#125;&#39; -e &#39;x;/CREATE TABLE `class`/!d;q&#39; &gt; class_structure.sql 
+cat atguigu.sql | grep --ignore-case &#39;insert into `class`&#39; &gt; class_data.sql 
+#用shell语法分离出创建表的语句及插入数据的语句后 再依次导出即可完成恢复 
+
+use atguigu; 
+mysql&gt; source class_structure.sql; 
+Query OK, 0 rows affected, 1 warning (0.00 sec) 
+
+mysql&gt; source class_data.sql; 
+Query OK, 1 row affected (0.01 sec)
+</code></pre>
+<h4 id="4-表的导出与导入"><a href="#4-表的导出与导入" class="headerlink" title="4. 表的导出与导入"></a><strong>4.</strong> <strong>表的导出与导入</strong></h4><h5 id="4-1-表的导出"><a href="#4-1-表的导出" class="headerlink" title="4.1 表的导出"></a><strong>4.1</strong> <strong>表的导出</strong></h5><p><strong>1.</strong> <strong>使用SELECT…INTO OUTFILE导出文本文件</strong> </p>
+<pre><code class="mysql">SHOW GLOBAL VARIABLES LIKE &#39;%secure%&#39;;
+SELECT * FROM account INTO OUTFILE &quot;/var/lib/mysql-files/account.txt&quot;;
+</code></pre>
+<p><strong>2.</strong> <strong>使用mysqldump命令导出文本文件</strong></p>
+<pre><code class="shell">mysqldump -uroot -p -T &quot;/var/lib/mysql-files/&quot; atguigu account
+# 或
+mysqldump -uroot -p -T &quot;/var/lib/mysql-files/&quot; atguigu account --fields-terminated- by=&#39;,&#39; --fields-optionally-enclosed-by=&#39;\&quot;&#39;
+</code></pre>
+<p><strong>3.</strong> <strong>使用mysql命令导出文本文件</strong></p>
+<pre><code class="shell">mysql -uroot -p --execute=&quot;SELECT * FROM account;&quot; atguigu&gt; &quot;/var/lib/mysql-files/account.txt&quot;
+</code></pre>
+<h5 id="4-2-表的导入"><a href="#4-2-表的导入" class="headerlink" title="4.2 表的导入"></a><strong>4.2</strong> <strong>表的导入</strong></h5><p><strong>1.</strong> <strong>使用LOAD DATA INFILE方式导入文本文件</strong></p>
+<pre><code class="mysql">LOAD DATA INFILE &#39;/var/lib/mysql-files/account_0.txt&#39; INTO TABLE atguigu.account;
+# 或
+LOAD DATA INFILE &#39;/var/lib/mysql-files/account_1.txt&#39; INTO TABLE atguigu.account FIELDS TERMINATED BY &#39;,&#39; ENCLOSED BY &#39;\&quot;&#39;;
+</code></pre>
+<p><strong>2.</strong> <strong>使用mysqlimport方式导入文本文件</strong></p>
+<pre><code class="shell">mysqlimport -uroot -p atguigu &#39;/var/lib/mysql-files/account.txt&#39; --fields-terminated- by=&#39;,&#39; --fields-optionally-enclosed-by=&#39;\&quot;&#39;
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2023/07/15/%E7%AC%AC19%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/">https://349264976.github.io/2023/07/15/%E7%AC%AC19%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/07/15/%E7%AC%AC18%E7%AB%A0%20%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/" title="第19章 数据库备份与恢复"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第19章 数据库备份与恢复</div></div></a></div><div class="next-post pull-right"><a href="/2023/07/15/%E7%AC%AC06%E7%AB%A0%20%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="第06章 索引的数据结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第06章 索引的数据结构</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC19%E7%AB%A0-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="toc-number">1.</span> <span class="toc-text">第19章 数据库备份与恢复</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%89%A9%E7%90%86%E5%A4%87%E4%BB%BD%E4%B8%8E%E9%80%BB%E8%BE%91%E5%A4%87%E4%BB%BD"><span class="toc-number">1.1.</span> <span class="toc-text">1. 物理备份与逻辑备份</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-mysqldump%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91%E5%A4%87%E4%BB%BD"><span class="toc-number">1.2.</span> <span class="toc-text">2. mysqldump实现逻辑备份</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-%E5%A4%87%E4%BB%BD%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 备份一个数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-%E5%A4%87%E4%BB%BD%E5%85%A8%E9%83%A8%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 备份全部数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-%E5%A4%87%E4%BB%BD%E9%83%A8%E5%88%86%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 备份部分数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-%E5%A4%87%E4%BB%BD%E9%83%A8%E5%88%86%E8%A1%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 备份部分表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-5-%E5%A4%87%E4%BB%BD%E5%8D%95%E8%A1%A8%E7%9A%84%E9%83%A8%E5%88%86%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 备份单表的部分数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-6-%E6%8E%92%E9%99%A4%E6%9F%90%E4%BA%9B%E8%A1%A8%E7%9A%84%E5%A4%87%E4%BB%BD"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 排除某些表的备份</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-7-%E5%8F%AA%E5%A4%87%E4%BB%BD%E7%BB%93%E6%9E%84%E6%88%96%E5%8F%AA%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE"><span class="toc-number">1.2.7.</span> <span class="toc-text">2.7 只备份结构或只备份数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-8-%E5%A4%87%E4%BB%BD%E4%B8%AD%E5%8C%85%E5%90%AB%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E3%80%81%E5%87%BD%E6%95%B0%E3%80%81%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.2.8.</span> <span class="toc-text">2.8 备份中包含存储过程、函数、事件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-mysql%E5%91%BD%E4%BB%A4%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.</span> <span class="toc-text">3. mysql命令恢复数据</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-1-%E5%8D%95%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%AD%E6%81%A2%E5%A4%8D%E5%8D%95%E5%BA%93"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 单库备份中恢复单库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 全量备份恢复</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E4%BB%8E%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD%E4%B8%AD%E6%81%A2%E5%A4%8D%E5%8D%95%E5%BA%93"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 从全量备份中恢复单库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-4-%E4%BB%8E%E5%8D%95%E5%BA%93%E5%A4%87%E4%BB%BD%E4%B8%AD%E6%81%A2%E5%A4%8D%E5%8D%95%E8%A1%A8"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 从单库备份中恢复单表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%A1%A8%E7%9A%84%E5%AF%BC%E5%87%BA%E4%B8%8E%E5%AF%BC%E5%85%A5"><span class="toc-number">1.4.</span> <span class="toc-text">4. 表的导出与导入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1-%E8%A1%A8%E7%9A%84%E5%AF%BC%E5%87%BA"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 表的导出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2-%E8%A1%A8%E7%9A%84%E5%AF%BC%E5%85%A5"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 表的导入</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/hexo%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hexo基本操作">hexo基本操作</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC02%E7%AB%A0%20MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" title="第02章 MySQL的数据目录">第02章 MySQL的数据目录</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC04%E7%AB%A0%20%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" title="第04章 逻辑架构">第04章 逻辑架构</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC05%E7%AB%A0%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" title="第05章 存储引擎">第05章 存储引擎</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
