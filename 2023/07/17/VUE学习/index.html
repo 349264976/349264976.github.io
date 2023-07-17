@@ -1,0 +1,733 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>VUE学习 | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vue学习VUE中的特点响应式显示 VUE的指令操作V-HTML ：可以替换 document.innerHtml 可以解析html语句并且展示到标签内容 v-show  1.控制元素隐藏 2.语法：v-show&#x3D;”表达式” 表达式的值 true显示 ，false 隐藏 实际上是控制标签的display：none来控制内容是否显示 是显示与不显示的问题 频繁操作的页面用 v-if  1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE学习">
+<meta property="og:url" content="https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="fuguangmengying">
+<meta property="og:description" content="vue学习VUE中的特点响应式显示 VUE的指令操作V-HTML ：可以替换 document.innerHtml 可以解析html语句并且展示到标签内容 v-show  1.控制元素隐藏 2.语法：v-show&#x3D;”表达式” 表达式的值 true显示 ，false 隐藏 实际上是控制标签的display：none来控制内容是否显示 是显示与不显示的问题 频繁操作的页面用 v-if  1.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://349264976.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-07-17T11:37:11.000Z">
+<meta property="article:modified_time" content="2023-07-17T16:27:18.176Z">
+<meta property="article:author" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://349264976.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'VUE学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-18 00:27:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">VUE学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-17T16:27:18.176Z" title="更新于 2023-07-18 00:27:18">2023-07-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="VUE学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="vue学习"><a href="#vue学习" class="headerlink" title="vue学习"></a>vue学习</h1><p>VUE中的特点响应式显示</p>
+<h4 id="VUE的指令操作"><a href="#VUE的指令操作" class="headerlink" title="VUE的指令操作"></a>VUE的指令操作</h4><p>V-HTML ：可以替换 document.innerHtml 可以解析html语句并且展示到标签内容</p>
+<p>v-show </p>
+<p>1.控制元素隐藏</p>
+<p>2.语法：v-show&#x3D;”表达式” 表达式的值 true显示 ，false 隐藏</p>
+<p>实际上是控制标签的display：none来控制内容是否显示 是显示与不显示的问题</p>
+<p>频繁操作的页面用</p>
+<p>v-if </p>
+<p>1.控制元素隐藏(条件渲染)</p>
+<p>2.语法 v-if&#x3D;”表达式“ 表达式值 true显示，false 隐藏</p>
+<p>实际上是控制判断条件决定是否创建标签 是存在与不存在的问题</p>
+<p> 不经常操作的用v-if</p>
+<p>v-else v-else-if</p>
+<p>1.作用：辅助v-if 进行判断渲染</p>
+<p>2.语法：v-else v-else-if&#x3D;”表达式“</p>
+<p>3.注意：需要紧挨着v-if一起使用</p>
+<p>ag</p>
+<pre><code class="vue">               &lt;div&gt;
+                &lt;div v-if=&quot;score &gt;= 90&quot;&gt;优秀&lt;/div&gt;
+                &lt;div v-else-if=&quot;score &gt;= 70&quot;&gt;普通&lt;/div&gt;
+                &lt;div v-else-if=&quot;score &gt;= 60&quot;&gt;及格&lt;/div&gt;
+                &lt;div v-else&gt;成绩过低建议重开&lt;/div&gt;
+              &lt;/div&gt;
+</code></pre>
+<p>v-on</p>
+<p>1.作用：注册时间&#x3D;添加监听+提供处理逻辑</p>
+<p>2.语法：</p>
+<p>1.v-on：事件名&#x3D;”内敛语句”</p>
+<p>v-on:&#x3D;&#x3D;@</p>
+<pre><code class="vue">           &lt;button v-on:click=&quot;count--&quot;&gt;-&lt;/button&gt; 
+          &lt;span&gt;&#123;&#123;count&#125;&#125;&lt;/span&gt;   
+          &lt;button v-on:click=&quot;count++&quot;&gt;+&lt;/button&gt;  
+          &lt;button @click=&quot;count--&quot;&gt;-&lt;/button&gt; 
+          &lt;span&gt;&#123;&#123;count&#125;&#125;&lt;/span&gt;   
+          &lt;button @click=&quot;count++&quot;&gt;+&lt;/button&gt;  
+</code></pre>
+<p>2.v-on：时间名&#x3D;”methods中的函数名字“</p>
+<pre><code class="vue">  &lt;/div&gt;  
+    &lt;button @click=&quot;fn&quot;&gt;显示or隐藏&lt;/button&gt;
+    &lt;h1 v-show=&quot;flag&quot;&gt;黑马程序员&lt;/h1&gt;
+    &lt;/div&gt;
+          methods: 
+                 &#123;
+                    fn()&#123;
+                        this.flag=!this.flag;
+                    &#125;
+
+                &#125;
+</code></pre>
+<p>v-on调用传参数</p>
+<p>v-bind：属性名&#x3D;“表达式”</p>
+<p>1.作用：动态的设置html的标签属性-》 src url title ….</p>
+<p>2.语法： v-bind:属性名&#x3D;“表达式”</p>
+<p>可以将v-bind改写成：</p>
+<pre><code class="vue">    &lt;img v-bind:src=&quot;imgurl&quot; alt=&quot;&quot;&gt; tup&lt;/img&gt;
+</code></pre>
+<p>v-for</p>
+<p>v-for&#x3D;”(item,index) in 数组”</p>
+<p>item 每一项，index 下标</p>
+<pre><code class="vue"> &lt;ul&gt;
+      &lt;li v-for=&quot;(item, index) in booksList&quot; 				                                    :key=&quot;item.id&quot;&gt;
+        &lt;span&gt;&#123;&#123; item.name &#125;&#125;&lt;/span&gt;
+        &lt;span&gt;&#123;&#123; item.author &#125;&#125;&lt;/span&gt;
+        &lt;!-- 注册点击事件 →  通过 id 进行删除数组中的 对应项 --&gt;
+        &lt;button @click=&quot;del(item.id)&quot;&gt;删除&lt;/button&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+
+ &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        booksList: [
+          &#123; id: 1, name: &#39;《红楼梦》&#39;, author: &#39;曹雪芹&#39; &#125;,
+          &#123; id: 2, name: &#39;《西游记》&#39;, author: &#39;吴承恩&#39; &#125;,
+          &#123; id: 3, name: &#39;《水浒传》&#39;, author: &#39;施耐庵&#39; &#125;,
+          &#123; id: 4, name: &#39;《三国演义》&#39;, author: &#39;罗贯中&#39; &#125;
+        ]
+      &#125;,
+      methods: &#123;
+        del (id) &#123;
+          // console.log(&#39;删除&#39;, id)
+          // 通过 id 进行删除数组中的 对应项 → filter(不会改变原数组)
+          // filter: 根据条件，保留满足条件的对应项，得到一个新数组。
+          // console.log(this.booksList.filter(item =&gt; item.id !== id))
+          this.booksList = this.booksList.filter(item =&gt; item.id !== id)
+        &#125;
+      &#125;
+    &#125;)
+  &lt;/script&gt;
+</code></pre>
+<p>v-model</p>
+<p>1.作用：给表单元素使用，双向的绑定 –&gt;可以快速获取或者设置表单内容</p>
+<p>v-model&#x3D;”变量”</p>
+<p>数据变化 视图自动更新 </p>
+<p>视图变化数据自动更新</p>
+<p>双向绑定</p>
+<pre><code> &lt;div id=&quot;app&quot;&gt;
+    &lt;!-- 
+      v-model 可以让数据和视图，形成双向数据绑定
+      (1) 数据变化，视图自动更新
+      (2) 视图变化，数据自动更新
+      可以快速[获取]或[设置]表单元素的内容
+     --&gt;
+    账户：&lt;input type=&quot;text&quot; v-model=&quot;username&quot;&gt; &lt;br&gt;&lt;br&gt;
+    密码：&lt;input type=&quot;password&quot; v-model=&quot;password&quot;&gt; &lt;br&gt;&lt;br&gt;
+    &lt;button @click=&quot;login&quot;&gt;登录&lt;/button&gt;
+    &lt;button @click=&quot;reset&quot;&gt;重置&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        username: &#39;&#39;,
+        password: &#39;&#39;
+      &#125;,
+      methods: &#123;
+        login () &#123;
+          console.log(this.username, this.password)
+        &#125;,
+        reset () &#123;
+          this.username = &#39;&#39;
+          this.password = &#39;&#39;
+        &#125;
+      &#125;
+    &#125;)
+  &lt;/script&gt;
+</code></pre>
+<h4 id="第一个小案例"><a href="#第一个小案例" class="headerlink" title="第一个小案例"></a>第一个小案例</h4><pre><code class="vue">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot; /&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;./index.css&quot; /&gt;
+&lt;title&gt;记事本&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 主体区域 --&gt;
+&lt;section id=&quot;app&quot;&gt;
+  &lt;!-- 输入框 --&gt;
+  &lt;header class=&quot;header&quot;&gt;
+    &lt;h1&gt;小黑记事本&lt;/h1&gt;
+    &lt;input v-model=&quot;todoName&quot; placeholder=&quot;请输入任务&quot; class=&quot;new-todo&quot; /&gt;
+    &lt;button class=&quot;add&quot; @click=&quot;add()&quot;&gt;添加任务&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;!-- 列表区域 --&gt;
+  &lt;section class=&quot;main&quot;&gt;
+    &lt;ul class=&quot;todo-list&quot;&gt;
+      &lt;li class=&quot;todo&quot; v-for=&quot;(item,index) in list&quot; v-bind:key=&quot;list&quot;&gt;
+        &lt;div class=&quot;view&quot;&gt;
+          &lt;span class=&quot;index&quot;&gt;&#123;&#123;index+1&#125;&#125;.&lt;/span&gt; &lt;label&gt;&#123;&#123;item.name&#125;&#125;&lt;/label&gt;
+          &lt;button @click=&quot;del(item.id)&quot; class=&quot;destroy&quot;&gt;删除&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/section&gt;
+  &lt;!-- 统计和清空 --&gt;
+  &lt;footer class=&quot;footer&quot;&gt;
+    &lt;!-- 统计 --&gt;
+    &lt;span class=&quot;todo-count&quot;&gt;合 计:&lt;strong&gt; &#123;&#123;list.length&#125;&#125; &lt;/strong&gt;&lt;/span&gt;
+    &lt;!-- 清空 --&gt;
+    &lt;button v-show=&quot;list.length&gt;0&quot; class=&quot;clear-completed&quot; @click=&quot;qk&quot;&gt;
+      清空任务
+    &lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/section&gt;
+
+&lt;!-- 底部 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+
+  const app = new Vue(&#123;
+    el: &#39;#app&#39;,
+    data: &#123;
+      list:[
+        &#123;id:1,name: &quot;跑步一公里&quot;&#125;,
+        &#123;id:2,name: &quot;洗澡一小时&quot;&#125;,
+      ]
+    &#125;,
+  methods:&#123;
+    del(id)&#123;
+      this.list=this.list.filter(item=&gt;item.id !==id)
+    &#125;,
+    add()&#123;
+      if(this.todoName.trim()===&quot;&quot;)&#123;
+        alert(&quot;名称不能为空&quot;)
+        return
+      &#125;
+      this.list.unshift(&#123;
+        id: +new Date(),
+        name: this.todoName
+      &#125;)
+      this.todoName=&quot;&quot;
+    &#125;,
+    qk()&#123;
+      this.list=[]
+    &#125;
+  &#125;
+  &#125;)
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="css">html,
+body &#123;
+  margin: 0;
+  padding: 0;
+&#125;
+body &#123;
+  background: #fff;
+&#125;
+button &#123;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-family: inherit;
+  font-weight: inherit;
+  color: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+&#125;
+
+body &#123;
+  font: 14px &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  background: #f5f5f5;
+  color: #4d4d4d;
+  min-width: 230px;
+  max-width: 550px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
+&#125;
+
+:focus &#123;
+  outline: 0;
+&#125;
+
+.hidden &#123;
+  display: none;
+&#125;
+
+#app &#123;
+  background: #fff;
+  margin: 180px 0 40px 0;
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+&#125;
+#app .header input &#123;
+  border: 2px solid rgba(175, 47, 47, 0.8);
+  border-radius: 10px;
+&#125;
+#app .add &#123;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  height: 68px;
+  width: 140px;
+  text-align: center;
+  background-color: rgba(175, 47, 47, 0.8);
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 0 10px 10px 0;
+&#125;
+
+#app input::-webkit-input-placeholder &#123;
+  font-style: italic;
+  font-weight: 300;
+  color: #e6e6e6;
+&#125;
+
+#app input::-moz-placeholder &#123;
+  font-style: italic;
+  font-weight: 300;
+  color: #e6e6e6;
+&#125;
+
+#app input::input-placeholder &#123;
+  font-style: italic;
+  font-weight: 300;
+  color: gray;
+&#125;
+
+#app h1 &#123;
+  position: absolute;
+  top: -120px;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(175, 47, 47, 0.8);
+  -webkit-text-rendering: optimizeLegibility;
+  -moz-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+&#125;
+
+.new-todo,
+.edit &#123;
+  position: relative;
+  margin: 0;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4em;
+  border: 0;
+  color: inherit;
+  padding: 6px;
+  box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+&#125;
+
+.new-todo &#123;
+  padding: 16px;
+  border: none;
+  background: rgba(0, 0, 0, 0.003);
+  box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+&#125;
+
+.main &#123;
+  position: relative;
+  z-index: 2;
+&#125;
+
+.todo-list &#123;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+&#125;
+
+.todo-list li &#123;
+  position: relative;
+  font-size: 24px;
+  height: 60px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+&#125;
+
+.todo-list li:last-child &#123;
+  border-bottom: none;
+&#125;
+
+.todo-list .view .index &#123;
+  position: absolute;
+  color: gray;
+  left: 10px;
+  top: 20px;
+  font-size: 22px;
+&#125;
+
+.todo-list li .toggle &#123;
+  text-align: center;
+  width: 40px;
+  /* auto, since non-WebKit browsers doesn&#39;t support input styling */
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border: none; /* Mobile Safari */
+  -webkit-appearance: none;
+  appearance: none;
+&#125;
+
+.todo-list li .toggle &#123;
+  opacity: 0;
+&#125;
+
+.todo-list li .toggle + label &#123;
+  /*
+        Firefox requires `#` to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433
+        IE and Edge requires *everything* to be escaped to render, so we do that instead of just the `#` - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7157459/
+    */
+  background-image: url(&#39;data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23ededed%22%20stroke-width%3D%223%22/%3E%3C/svg%3E&#39;);
+  background-repeat: no-repeat;
+  background-position: center left;
+&#125;
+
+.todo-list li .toggle:checked + label &#123;
+  background-image: url(&#39;data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E&#39;);
+&#125;
+
+.todo-list li label &#123;
+  word-break: break-all;
+  padding: 15px 15px 15px 60px;
+  display: block;
+  line-height: 1.2;
+  transition: color 0.4s;
+&#125;
+
+.todo-list li.completed label &#123;
+  color: #d9d9d9;
+  text-decoration: line-through;
+&#125;
+
+.todo-list li .destroy &#123;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto 0;
+  font-size: 30px;
+  color: #cc9a9a;
+  margin-bottom: 11px;
+  transition: color 0.2s ease-out;
+&#125;
+
+.todo-list li .destroy:hover &#123;
+  color: #af5b5e;
+&#125;
+
+.todo-list li .destroy:after &#123;
+  content: &#39;×&#39;;
+&#125;
+
+.todo-list li:hover .destroy &#123;
+  display: block;
+&#125;
+
+.todo-list li .edit &#123;
+  display: none;
+&#125;
+
+.todo-list li.editing:last-child &#123;
+  margin-bottom: -1px;
+&#125;
+
+.footer &#123;
+  color: #777;
+  padding: 10px 15px;
+  height: 20px;
+  text-align: center;
+  border-top: 1px solid #e6e6e6;
+&#125;
+
+.footer:before &#123;
+  content: &#39;&#39;;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  overflow: hidden;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgba(0, 0, 0, 0.2);
+&#125;
+
+.todo-count &#123;
+  float: left;
+  text-align: left;
+&#125;
+
+.todo-count strong &#123;
+  font-weight: 300;
+&#125;
+
+.filters &#123;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  left: 0;
+&#125;
+
+.filters li &#123;
+  display: inline;
+&#125;
+
+.filters li a &#123;
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+&#125;
+
+.filters li a:hover &#123;
+  border-color: rgba(175, 47, 47, 0.1);
+&#125;
+
+.filters li a.selected &#123;
+  border-color: rgba(175, 47, 47, 0.2);
+&#125;
+
+.clear-completed,
+html .clear-completed:active &#123;
+  float: right;
+  position: relative;
+  line-height: 20px;
+  text-decoration: none;
+  cursor: pointer;
+&#125;
+
+.clear-completed:hover &#123;
+  text-decoration: underline;
+&#125;
+
+.info &#123;
+  margin: 50px auto 0;
+  color: #bfbfbf;
+  font-size: 15px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-align: center;
+&#125;
+
+.info p &#123;
+  line-height: 1;
+&#125;
+
+.info a &#123;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 400;
+&#125;
+
+.info a:hover &#123;
+  text-decoration: underline;
+&#125;
+
+/*
+    Hack to remove background from Mobile Safari.
+    Can&#39;t use it globally since it destroys checkboxes in Firefox
+*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) &#123;
+  .toggle-all,
+  .todo-list li .toggle &#123;
+    background: none;
+  &#125;
+
+  .todo-list li .toggle &#123;
+    height: 40px;
+  &#125;
+&#125;
+
+@media (max-width: 430px) &#123;
+  .footer &#123;
+    height: 50px;
+  &#125;
+
+  .filters &#123;
+    bottom: 10px;
+  &#125;
+&#125;
+</code></pre>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718001533335.png" alt="image-20230718001533335"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/">https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/07/17/javascript%E5%85%B3%E9%94%AE%E7%82%B9/" title="javascript关键点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">javascript关键点</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">vue学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE%E7%9A%84%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">VUE的指令操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A1%88%E4%BE%8B"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">第一个小案例</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/" title="VUE学习">VUE学习</a><time datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/17/javascript%E5%85%B3%E9%94%AE%E7%82%B9/" title="javascript关键点">javascript关键点</a><time datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/hexo%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hexo基本操作">hexo基本操作</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC02%E7%AB%A0%20MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" title="第02章 MySQL的数据目录">第02章 MySQL的数据目录</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
