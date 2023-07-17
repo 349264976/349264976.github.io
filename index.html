@@ -55,7 +55,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-07-16 23:45:47'
+  postUpdate: '2023-07-18 00:16:17'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -180,7 +180,24 @@
 2. 表中数据和索引
 ① 系统表空间（system tablespace）
 默认情况下，InnoDB会在数据目录下创建一个名为ibdata1、大小为12M的自拓展文件，这个文件就是对应的系统表空间在文件系统上的表示。
-② 独立表空间(f ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第03章 用户与权限管理1. 用户管理1.1 登录MySQL服务器启动MySQL服务后，可以通过mysql命令来登录MySQL服务器，命令如下：
+② 独立表空间(f ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC04%E7%AB%A0%20%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" title="第04章 逻辑架构">第04章 逻辑架构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第04章 逻辑架构1. 逻辑架构剖析
+1.1 第1层：连接层系统（客户端）访问MySQL服务器前，做的第一件事就是建立TCP连接。
+经过三次握手建立连接成功后，MySQL服务器对TCP传输过来的账号密码做身份认证、权限获取。
+
+用户名或密码不对，会收到一个Access denied for user错误，客户端程序结束执行
+用户名密码认证通过，会从权限表查出账号拥有的权限与连接关联，之后的权限判断逻辑，都将依赖于此时读到的权限
+
+TCP连接收到请求后，必须要分配给一个线程专门与这个客户端的交互。所以还会有个线程池，去走后面的流程。每一个连接从线程池中获取线程，省去了创建和销毁线程的开销。
+1.2 第2层：服务层
+SQL Interface: SQL接口
+
+接收用户的SQL命令，并且返回用户需要查询的结果。比如SELECT … FROM就是调用SQL Interface 
+MySQL支持DML（数据操作语言）、DDL（数据定义语言）、存储过程、视图、触发器、自定义函数等多种SQL语言接口
+
+
+Parser: 解析器
+
+在解析器中对 SQL 语句进行语法分析、语义分析。将SQL语句分解成数 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第03章 用户与权限管理1. 用户管理1.1 登录MySQL服务器启动MySQL服务后，可以通过mysql命令来登录MySQL服务器，命令如下：
 mysql –h hostname|hostIP –P port –u username –p DatabaseName –e &quot;SQL语句&quot;
 
 
@@ -219,24 +236,18 @@ systemctl restart mysqld.service
     建表语句; 
 ) ENGINE = 存储引擎名称;
 
-3. ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC04%E7%AB%A0%20%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" title="第04章 逻辑架构">第04章 逻辑架构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第04章 逻辑架构1. 逻辑架构剖析
-1.1 第1层：连接层系统（客户端）访问MySQL服务器前，做的第一件事就是建立TCP连接。
-经过三次握手建立连接成功后，MySQL服务器对TCP传输过来的账号密码做身份认证、权限获取。
+3. ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC09%E7%AB%A0%20%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="第09章 性能分析工具的使用">第09章 性能分析工具的使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第09章 性能分析工具的使用1. 统计SQL的查询成本：last_query_costSHOW STATUS LIKE &#39;last_query_cost&#39;;
 
-用户名或密码不对，会收到一个Access denied for user错误，客户端程序结束执行
-用户名密码认证通过，会从权限表查出账号拥有的权限与连接关联，之后的权限判断逻辑，都将依赖于此时读到的权限
+使用场景：它对于比较开销是非常有用的，特别是我们有好几种查询方式可选的时候。
 
-TCP连接收到请求后，必须要分配给一个线程专门与这个客户端的交互。所以还会有个线程池，去走后面的流程。每一个连接从线程池中获取线程，省去了创建和销毁线程的开销。
-1.2 第2层：服务层
-SQL Interface: SQL接口
+SQL 查询是一个动态的过程，从页加载的角度来看，我们可以得到以下两点结论：
 
-接收用户的SQL命令，并且返回用户需要查询的结果。比如SELECT … FROM就是调用SQL Interface 
-MySQL支持DML（数据操作语言）、DDL（数据定义语言）、存储过程、视图、触发器、自定义函数等多种SQL语言接口
+位置决定效率。如果页就在数据库缓冲池中，那么效率是最高的，否则还需要从内存或者磁盘中进行读取，当然针对单个页的读取来说，如果页存在于内存中，会比在磁盘中读取效率高很多。
+批量决定效率。如果我们从磁盘中对单一页进行随机读，那么效率是很低的（差不多10ms），而采用顺序读取的方式，批量对页进行读取，平均一页的读取效率就会提升很多，甚至要快于单个页面在内存中的随机读取。
 
+所以说，遇到I&#x2F;O并不用担心，方法找对了，效率还是很高的。我们首先要考虑数据存放的位置，如果是经常使用的数据就要尽量放到缓冲池中，其次我们可以充分利用磁盘的吞吐能力，一次性批量读取数据，这样单个页的读取效率也就得到了提升。
 
-Parser: 解析器
-
-在解析器中对 SQL 语句进行语法分析、语义分析。将SQL语句分解成数 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC08%E7%AB%A0%20%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" title="第08章 索引的创建与设计原则">第08章 索引的创建与设计原则</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第08章 索引的创建与设计原则1. 索引的声明与使用1.1 索引的分类
+2. 定位执行慢的SQL：慢查询日志MySQL的慢查询日志 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC08%E7%AB%A0%20%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99/" title="第08章 索引的创建与设计原则">第08章 索引的创建与设计原则</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第08章 索引的创建与设计原则1. 索引的声明与使用1.1 索引的分类
 从功能逻辑上说，索引主要有 4 种，分别是普通索引、唯一索引、主键索引、全文索引。
 按照物理实现方式，索引可以分为 2 种：聚簇索引和非聚簇索引。
 按照作用字段个数进行划分，分成单列索引和联合索引。
@@ -258,18 +269,24 @@ ASC ...</div></div></div><div class="recent-post-item"><div class="recent-post-i
 大多数情况下都（默认）采用B+树来构建索引。只是空间列类型的索引使用R-树，并且MEMORY表还支持hash索引。
 其实，用不用索引，最终都是优化器说了算。优化器是基于什么的优化器？基于cost开销(CostBaseOptimizer)，它不是基于规则(Rule-BasedOptimizer)，也不是基于语义。怎么样开销小就怎么来。另外，SQL语句是否使用索引，跟数据库版本、数据量、数据选择度都有关系。
 1.1 全值匹配我最爱1.2 最佳左前缀法则在MySQL建立联合索引时会遵守最佳左前缀匹配原则，即最左优先，在检索数据时从联合索引的最左边开始匹配。
-结论：MySQL可以为多个字段创建索引，一个索引可以 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC09%E7%AB%A0%20%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="第09章 性能分析工具的使用">第09章 性能分析工具的使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第09章 性能分析工具的使用1. 统计SQL的查询成本：last_query_costSHOW STATUS LIKE &#39;last_query_cost&#39;;
+结论：MySQL可以为多个字段创建索引，一个索引可以 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC13%E7%AB%A0%20%E4%BA%8B%E5%8A%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="第13章 事务基础知识">第13章 事务基础知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第13章 事务基础知识1. 数据库事务概述1.1 基本概念事务：一组逻辑操作单元，使数据从一种状态变换到另一种状态。
+事务处理的原则：保证所有事务都作为一个工作单元来执行，即使出现了故障，都不能改变这种执行方式。当在一个事务中执行多个操作时，要么所有的事务都被提交(commit)，那么这些修改就永久地保存下来；要么数据库管理系统将放弃所作的所有修改，整个事务回滚(rollback)到最初状态。
+1.2 事务的ACID特性
+原子性（atomicity）：
 
-使用场景：它对于比较开销是非常有用的，特别是我们有好几种查询方式可选的时候。
+原子性是指事务是一个不可分割的工作单位，要么全部提交，要么全部失败回滚。
 
-SQL 查询是一个动态的过程，从页加载的角度来看，我们可以得到以下两点结论：
+一致性（consistency）：
 
-位置决定效率。如果页就在数据库缓冲池中，那么效率是最高的，否则还需要从内存或者磁盘中进行读取，当然针对单个页的读取来说，如果页存在于内存中，会比在磁盘中读取效率高很多。
-批量决定效率。如果我们从磁盘中对单一页进行随机读，那么效率是很低的（差不多10ms），而采用顺序读取的方式，批量对页进行读取，平均一页的读取效率就会提升很多，甚至要快于单个页面在内存中的随机读取。
+一致性是指事务执行前后，数据从一个合法性状态变换到另外一个合法性状态。这种状态是语义上的而不是语法上的，跟具体的业务有关。
 
-所以说，遇到I&#x2F;O并不用担心，方法找对了，效率还是很高的。我们首先要考虑数据存放的位置，如果是经常使用的数据就要尽量放到缓冲池中，其次我们可以充分利用磁盘的吞吐能力，一次性批量读取数据，这样单个页的读取效率也就得到了提升。
+隔离型（isolation）：
 
-2. 定位执行慢的SQL：慢查询日志MySQL的慢查询日志 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC12%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B6%E5%AE%83%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5/" title="第12章 数据库其它调优策略">第12章 数据库其它调优策略</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第12章 数据库其它调优策略1. 数据库调优的措施1.1 调优的目标
+事务的隔离性是指一个事务的执行不能被其他事务干扰，即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。
+
+持久性（durability）：
+
+持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来的其他操作 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC12%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E5%BA%93%E5%85%B6%E5%AE%83%E8%B0%83%E4%BC%98%E7%AD%96%E7%95%A5/" title="第12章 数据库其它调优策略">第12章 数据库其它调优策略</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第12章 数据库其它调优策略1. 数据库调优的措施1.1 调优的目标
 尽可能节省系统资源，以便系统可以提供更大负荷的服务。（吞吐量更大）
 合理的结构设计和参数调整，以提高用户操 响应的速度。（响应速度更快）
 减少系统的瓶颈，提高MySQL数据库整体的性能。
@@ -293,24 +310,7 @@ SQL 查询是一个动态的过程，从页加载的角度来看，我们可以�
 2、数据分片
 
 2. 优化MySQL服务器2.1 优化服务器硬件服务器的硬件性能直接决定着MySQL数据库的性能。硬件的性能瓶颈直接决定MySQL数据库的运行速度和效率。针对性能瓶颈提高硬件配置，可以提高MySQL数据库查询、更新的速度。 
-（1） ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/07/15/%E7%AC%AC13%E7%AB%A0%20%E4%BA%8B%E5%8A%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="第13章 事务基础知识">第13章 事务基础知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></span></div><div class="content">第13章 事务基础知识1. 数据库事务概述1.1 基本概念事务：一组逻辑操作单元，使数据从一种状态变换到另一种状态。
-事务处理的原则：保证所有事务都作为一个工作单元来执行，即使出现了故障，都不能改变这种执行方式。当在一个事务中执行多个操作时，要么所有的事务都被提交(commit)，那么这些修改就永久地保存下来；要么数据库管理系统将放弃所作的所有修改，整个事务回滚(rollback)到最初状态。
-1.2 事务的ACID特性
-原子性（atomicity）：
-
-原子性是指事务是一个不可分割的工作单位，要么全部提交，要么全部失败回滚。
-
-一致性（consistency）：
-
-一致性是指事务执行前后，数据从一个合法性状态变换到另外一个合法性状态。这种状态是语义上的而不是语法上的，跟具体的业务有关。
-
-隔离型（isolation）：
-
-事务的隔离性是指一个事务的执行不能被其他事务干扰，即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。
-
-持久性（durability）：
-
-持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来的其他操作 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/hexo%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hexo基本操作">hexo基本操作</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC02%E7%AB%A0%20MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" title="第02章 MySQL的数据目录">第02章 MySQL的数据目录</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC05%E7%AB%A0%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" title="第05章 存储引擎">第05章 存储引擎</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC04%E7%AB%A0%20%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" title="第04章 逻辑架构">第04章 逻辑架构</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">20</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-07-16T15:45:46.864Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+（1） ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/hexo%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hexo基本操作">hexo基本操作</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC02%E7%AB%A0%20MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" title="第02章 MySQL的数据目录">第02章 MySQL的数据目录</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC04%E7%AB%A0%20%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/" title="第04章 逻辑架构">第04章 逻辑架构</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC05%E7%AB%A0%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" title="第05章 存储引擎">第05章 存储引擎</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><span class="card-archive-list-count">20</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-07-17T16:16:17.716Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
   init: (str) => {
     window.typed = new Typed('#subtitle', Object.assign({
       strings: str,
