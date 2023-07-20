@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>VUE学习 | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vue学习VUE中的特点响应式显示 VUE的指令操作V-HTML ：可以替换 document.innerHtml 可以解析html语句并且展示到标签内容 v-show  1.控制元素隐藏 2.语法：v-show&#x3D;”表达式” 表达式的值 true显示 ，false 隐藏 实际上是控制标签的display：none来控制内容是否显示 是显示与不显示的问题 频繁操作的页面用 v-if  1.">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>VUE学习 | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vue学习要求： 使用数据需要存在 ​			不能再插值表达式中使用关键字等语句 ​			不能再标签中使用插值表达式 &lt;div id&#x3D;&quot;app&quot;&gt;         &lt;!-- 编写一些用于渲染的代码逻辑 --&gt;         &amp;#123;&amp;#123;name+name&amp;#125;&amp;#125;         &amp;#123;&amp;#123;name.toUpper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VUE学习">
 <meta property="og:url" content="https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="fuguangmengying">
-<meta property="og:description" content="vue学习VUE中的特点响应式显示 VUE的指令操作V-HTML ：可以替换 document.innerHtml 可以解析html语句并且展示到标签内容 v-show  1.控制元素隐藏 2.语法：v-show&#x3D;”表达式” 表达式的值 true显示 ，false 隐藏 实际上是控制标签的display：none来控制内容是否显示 是显示与不显示的问题 频繁操作的页面用 v-if  1.">
+<meta property="og:description" content="vue学习要求： 使用数据需要存在 ​			不能再插值表达式中使用关键字等语句 ​			不能再标签中使用插值表达式 &lt;div id&#x3D;&quot;app&quot;&gt;         &lt;!-- 编写一些用于渲染的代码逻辑 --&gt;         &amp;#123;&amp;#123;name+name&amp;#125;&amp;#125;         &amp;#123;&amp;#123;name.toUpper">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://349264976.github.io/img/avatar.jpg">
 <meta property="article:published_time" content="2023-07-17T11:37:11.000Z">
-<meta property="article:modified_time" content="2023-07-17T16:27:18.176Z">
+<meta property="article:modified_time" content="2023-07-20T16:22:16.739Z">
 <meta property="article:author" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://349264976.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-07-18 00:27:18'
+  postUpdate: '2023-07-21 00:22:16'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -161,7 +161,30 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">VUE学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-17T16:27:18.176Z" title="更新于 2023-07-18 00:27:18">2023-07-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="VUE学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="vue学习"><a href="#vue学习" class="headerlink" title="vue学习"></a>vue学习</h1><p>VUE中的特点响应式显示</p>
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">VUE学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-20T16:22:16.739Z" title="更新于 2023-07-21 00:22:16">2023-07-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="VUE学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="vue学习"><a href="#vue学习" class="headerlink" title="vue学习"></a>vue学习</h1><p>要求： 使用数据需要存在</p>
+<p>​			不能再插值表达式中使用关键字等语句</p>
+<p>​			不能再标签中使用插值表达式</p>
+<pre><code class="vue">&lt;div id=&quot;app&quot;&gt;
+        &lt;!-- 编写一些用于渲染的代码逻辑 --&gt;
+        &#123;&#123;name+name&#125;&#125;
+        &#123;&#123;name.toUpperCase()&#125;&#125;
+    &lt;/div&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        const app=new Vue(
+            &#123;
+                el: &#39;#app&#39;,
+                data: &#123;
+                    //这个数据是响应式数据
+                    name: &#39;tony&#39;
+                &#125;
+            &#125;
+        )
+    &lt;/script&gt;
+</code></pre>
+<p>VUE中数据改变页面中的渲染也会改变</p>
+<p>VUE中的特点响应式显示</p>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230717203822221.png" alt="image-20230717203822221"></p>
 <h4 id="VUE的指令操作"><a href="#VUE的指令操作" class="headerlink" title="VUE的指令操作"></a>VUE的指令操作</h4><p>V-HTML ：可以替换 document.innerHtml 可以解析html语句并且展示到标签内容</p>
 <p>v-show </p>
 <p>1.控制元素隐藏</p>
@@ -730,4 +753,722 @@ html .clear-completed:active &#123;
 &#125;
 </code></pre>
 <p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718001533335.png" alt="image-20230718001533335"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/">https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/07/17/javascript%E5%85%B3%E9%94%AE%E7%82%B9/" title="javascript关键点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">javascript关键点</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">vue学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE%E7%9A%84%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">VUE的指令操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A1%88%E4%BE%8B"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">第一个小案例</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/" title="VUE学习">VUE学习</a><time datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/17/javascript%E5%85%B3%E9%94%AE%E7%82%B9/" title="javascript关键点">javascript关键点</a><time datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/hexo%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hexo基本操作">hexo基本操作</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC02%E7%AB%A0%20MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" title="第02章 MySQL的数据目录">第02章 MySQL的数据目录</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+<p>@keyup.enter 键盘回车监听</p>
+<p>v-model修饰符</p>
+<p>v-model.trim  -》 取出首尾空格</p>
+<p>v-model.number-》 转数字</p>
+<p>@时间名.stop  -》 阻止冒泡</p>
+<p>@时间名.prevent -》阻止默认行为</p>
+<p>v-bind的样式增强</p>
+<p>对.class操作</p>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718205311938.png" alt="image-20230718205311938"></p>
+<pre><code class="vue"> &lt;div id=&quot;app&quot;&gt;
+    &lt;ul&gt;
+      &lt;li v-for=&quot;(item,index) in list&quot;&gt;&lt;a :class=&quot;&#123;active: index===activeIndex&#125;&quot; href=&quot;#&quot; @click=&quot;activeIndex= index&quot;&gt;&#123;&#123;item.name&#125;&#125;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        activeIndex: 0,
+        list: [
+          &#123; id: 1, name: &#39;京东秒杀&#39; &#125;,
+          &#123; id: 2, name: &#39;每日特价&#39; &#125;,
+          &#123; id: 3, name: &#39;品类秒杀&#39; &#125;
+        ]
+      &#125;
+    &#125;)
+</code></pre>
+<p>对stytle操作</p>
+<pre><code class="vue">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+  &lt;style&gt;
+    .progress &#123;
+      height: 25px;
+      width: 400px;
+      border-radius: 15px;
+      background-color: #272425;
+      border: 3px solid #272425;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+    &#125;
+    .inner &#123;
+      width: 50%;
+      height: 20px;
+      border-radius: 10px;
+      text-align: right;
+      position: relative;
+      background-color: #409eff;
+      background-size: 20px 20px;
+      box-sizing: border-box;
+      transition: all 1s;
+    &#125;
+    .inner span &#123;
+      position: absolute;
+      right: -20px;
+      bottom: -25px;
+    &#125;
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;div class=&quot;progress&quot;&gt;
+      &lt;div :style=&quot;&#123;width: percent+&#39;%&#39;&#125;&quot; class=&quot;inner&quot;&gt;
+        &lt;span&gt;&#123;&#123;percent+'%'&#125;&#125;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button @click=&quot;setpercent(25)&quot;&gt;设置25%&lt;/button&gt;
+    &lt;button @click=&quot;setpercent(50)&quot;&gt;设置50%&lt;/button&gt;
+    &lt;button @click=&quot;setpercent(75)&quot;&gt;设置75%&lt;/button&gt;
+    &lt;button @click=&quot;setpercent(100)&quot;&gt;设置100%&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        percent: 30
+      &#125;,
+      methods: &#123;
+        setpercent(x)&#123;
+            this.percent=x;
+        &#125;
+      &#125;
+    &#125;)
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718210424696.png" alt="image-20230718210424696"></p>
+<p>v-model在表单其他属性的使用</p>
+<pre><code class="vue"> &lt;div id=&quot;app&quot;&gt;
+    &lt;h3&gt;小黑学习网&lt;/h3&gt;
+
+    姓名：
+      &lt;input v-model=&quot;username&quot; type=&quot;text&quot;&gt; 
+      &lt;br&gt;&lt;br&gt;
+
+    是否单身：
+      &lt;input type=&quot;checkbox&quot; v-model=&quot;isSingle&quot;&gt; 
+      &lt;br&gt;&lt;br&gt;
+
+    &lt;!-- 
+      前置理解：
+        1. name:  给单选框加上 name 属性 可以分组 → 同一组互相会互斥
+        2. value: 给单选框加上 value 属性，用于提交给后台的数据
+      结合 Vue 使用 → v-model
+    --&gt;
+    性别: 
+      &lt;input v-model=&quot;gender&quot; type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;1&quot;&gt;男
+      &lt;input v-model=&quot;gender&quot; type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;0&quot;&gt;女
+      &lt;br&gt;&lt;br&gt;
+
+    &lt;!-- 
+      前置理解：
+        1. option 需要设置 value 值，提交给后台
+        2. select 的 value 值，关联了选中的 option 的 value 值
+      结合 Vue 使用 → v-model
+    --&gt;
+    所在城市:
+      &lt;select v-model=&quot;cityname&quot;&gt;
+        &lt;option value=&quot;bj&quot;&gt;北京&lt;/option&gt;
+        &lt;option value=&quot;sh&quot;&gt;上海&lt;/option&gt;
+        &lt;option value=&quot;cd&quot;&gt;成都&lt;/option&gt;
+        &lt;option value=&quot;nj&quot;&gt;南京&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;br&gt;&lt;br&gt;
+
+    自我描述：
+      &lt;textarea v-model=&quot;desc&quot;&gt;&lt;/textarea&gt; 
+
+    &lt;button&gt;立即注册&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        username: &#39;2314&#39;,
+        isSingle: false,
+        gender: 1,
+        cityname: &#39;sh&#39;,
+        desc: 264452
+      &#125;
+    &#125;)
+  &lt;/script&gt;
+</code></pre>
+<p>计算属性</p>
+<h5 id="computed计算属性"><a href="#computed计算属性" class="headerlink" title="computed计算属性"></a>computed计算属性</h5><pre><code>&lt;body&gt;
+
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;h3&gt;小黑的礼物清单&lt;/h3&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;th&gt;名字&lt;/th&gt;
+        &lt;th&gt;数量&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr v-for=&quot;(item, index) in list&quot; :key=&quot;item.id&quot;&gt;
+        &lt;td&gt;&#123;&#123; item.name &#125;&#125;&lt;/td&gt;
+        &lt;td&gt;&#123;&#123; item.num &#125;&#125;个&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- 目标：统计求和，求得礼物总数 --&gt;
+    &lt;p&gt;礼物总数：&#123;&#123;totalCount&#125;&#125;个&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        // 现有的数据
+        list: [
+          &#123; id: 1, name: &#39;篮球&#39;, num: 1 &#125;,
+          &#123; id: 2, name: &#39;玩具&#39;, num: 2 &#125;,
+          &#123; id: 3, name: &#39;铅笔&#39;, num: 5 &#125;,
+        ]
+      &#125;,
+      computed: &#123;
+        totalCount()&#123;
+            
+          //需求： 对this.list数组里面的num进行求和
+          let total= this.list.reduce((sum,item)=&gt; sum+item.num,0)
+          return total;
+        &#125;
+      &#125;
+    &#125;)
+  &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<p>这里面的totalCount只是一个属性 他不是一个函数 只是一个属性 可以直接用 </p>
+<p>另外 reduce（sum，item）&#x3D;》sum +item.num，0</p>
+<pre><code>computed: &#123;
+        totalCount()&#123;
+            
+          //需求： 对this.list数组里面的num进行求和
+          let total= this.list.reduce((sum,item)=&gt; sum+item.num,0)
+          return total;
+        &#125;
+      &#125;
+</code></pre>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718213627406.png" alt="image-20230718213627406"></p>
+<p>计算属性的完整写法</p>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718214407703.png" alt="image-20230718214407703"></p>
+<pre><code class="vue">  &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        fname: &#39;李&#39;,
+        lname: &#39;99&#39;,
+      &#125;,
+      methods: &#123;
+        changename()&#123;
+          this.updatename=&#39;吕布&#39;
+        &#125;
+      &#125;,
+      computed: &#123;
+        updatename:&#123;
+          get()&#123;
+            this.fullname=this.fname+this.lname
+           return this.fullname;
+          &#125;,
+          // 当updatename计算属性被修改时 执行set函数 并且
+          // 这个操作是双向的 但是具体的逻辑是自己实现
+          set(value)&#123;
+            this.fname=value.slice(0,1),
+            this.lname=value.slice(1)
+          &#125;
+        &#125;
+      &#125;,
+      
+    &#125;)
+  &lt;/script&gt;
+</code></pre>
+<p>综合大案例</p>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718224255059.png" alt="image-20230718224255059"></p>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230718224323286.png" alt="image-20230718224323286"></p>
+<pre><code class="vue"> &lt;body&gt;
+    &lt;div id=&quot;app&quot; class=&quot;score-case&quot;&gt;
+      &lt;div class=&quot;table&quot;&gt;
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;编号&lt;/th&gt;
+              &lt;th&gt;科目&lt;/th&gt;
+              &lt;th&gt;成绩&lt;/th&gt;
+              &lt;th&gt;操作&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody v-if=&quot;list.length&gt;0&quot;&gt;
+            &lt;tr v-for=&quot;(item,index) in list&quot; :key=&quot;item.id&quot;&gt;
+              &lt;td&gt;&#123;&#123;item.id&#125;&#125;&lt;/td&gt;
+              &lt;td&gt;&#123;&#123;item.subject&#125;&#125;&lt;/td&gt;
+              &lt;td :class=&quot;&#123;red: item.score&lt;60&#125;&quot;&gt;&#123;&#123;item.score&#125;&#125;&lt;/td&gt;
+              &lt;td&gt;&lt;a @click.prevent=&quot;del(item.id)&quot; href=&quot;www.baidu.comwww.baidu.com&quot;&gt;删除&lt;/a&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+          &lt;tbody v-else&gt;
+            &lt;tr&gt;
+              &lt;td colspan=&quot;5&quot;&gt;
+                &lt;span class=&quot;none&quot;&gt;暂无数据&lt;/span&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+
+          &lt;tfoot&gt;
+            &lt;tr&gt;
+              &lt;td colspan=&quot;5&quot;&gt;
+                &lt;span&gt;总分：&#123;&#123;totalScore&#125;&#125;&lt;/span&gt;
+                &lt;span style=&quot;margin-left: 50px&quot;&gt;平均分：&#123;&#123;averageScorce&#125;&#125;&lt;/span&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tfoot&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form&quot;&gt;
+        &lt;div class=&quot;form-item&quot;&gt;
+          &lt;div class=&quot;label&quot;&gt;科目：&lt;/div&gt;
+          &lt;div class=&quot;input&quot;&gt;
+            &lt;input
+               type=&quot;text&quot;
+              placeholder=&quot;请输入科目&quot;
+            v-model.trim=&quot;subject&quot; /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-item&quot;&gt;
+          &lt;div class=&quot;label&quot;&gt;分数：&lt;/div&gt;
+          &lt;div class=&quot;input&quot;&gt;
+            &lt;input
+              type=&quot;text&quot;
+              placeholder=&quot;请输入分数&quot;
+             v-model=&quot;score&quot;/&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-item&quot;&gt;
+          &lt;div class=&quot;label&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;input&quot;&gt;
+            &lt;button class=&quot;submit&quot; @click=&quot;add()&quot; &gt;添加&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script&gt;
+      const app = new Vue(&#123;
+        el: &#39;#app&#39;,
+        data: &#123;
+          list: [
+            &#123; id: 1, subject: &#39;语文&#39;, score: 20 &#125;,
+            &#123; id: 7, subject: &#39;数学&#39;, score: 99 &#125;,
+            &#123; id: 12, subject: &#39;英语&#39;, score: 70 &#125;,
+          ],
+          subject: &#39;&#39;,
+          score: 0,
+        &#125;,
+        methods:&#123;
+          del(id)&#123;
+            this.list=this.list.filter(item=&gt; item.id!=id);
+          &#125;,
+          add()&#123;
+            if(!this.subject)&#123;
+              alert(&quot;请输入科目&quot;);
+              return
+            &#125;
+            if(typeof this.score !==&#39;number&#39;)&#123;
+              alert(&quot;输入正确的分数&quot;)
+              return
+            &#125;
+            this.list.unshift(&#123;
+              id: +new Date(),
+              subject: this.subject,
+              score: this.score
+            &#125;)
+            this.subject=&#39;&#39;,
+            this.score=&#39;&#39;
+          &#125;
+        &#125;,
+        computed:&#123;
+          totalScore()&#123;
+            return this.list.reduce((sum,item)=&gt;sum+item.score,0)
+          &#125;,
+          averageScorce()&#123;
+            if(this.list.length===0)&#123;
+              return 0;
+            &#125;
+              return (this.totalScore/this.list.length).toFixed(2)
+          &#125;
+          
+        &#125;
+      &#125;)
+    &lt;/script&gt;
+</code></pre>
+<p>watch监听器</p>
+<p>监听frutilist数据一旦改变获得最新值</p>
+<pre><code>        watch:&#123;
+          fruitList:&#123;
+            deep:true,
+            handler(newValue)&#123;
+              localStorage.setItem(&quot;fruit&quot;,JSON.stringify(newValue))
+            &#125;
+          &#125;
+        &#125;
+</code></pre>
+<h3 id="重要方法"><a href="#重要方法" class="headerlink" title="重要方法"></a>重要方法</h3><p>数组.reduce</p>
+<p>可以实现累加效果</p>
+<pre><code>return this.fruitList.reduce((sum, item) =&gt; sum + item, 0);
+</code></pre>
+<p>在这里，累加器函数 <code>(sum, item) =&gt; sum + item</code> 将每个元素依次加到累加器 <code>sum</code> 上，最终返回总和。初始值为 0，确保了当 <code>fruitList</code> 为空数组时，也能得到正确的结果。</p>
+<p>array.find 实现找到指定id的数组元素</p>
+<p>你的代码 <code>fruit.num--;</code> 是想要将找到的水果对象的 <code>num</code> 属性减 1。不过，在使用 <code>find</code> 方法找到对象后，需要确保对象存在才能执行减法操作，否则可能会导致错误。</p>
+<pre><code>const fruit = this.fruitList.find(item =&gt; item.id === id);
+if (fruit) &#123;
+  fruit.num--;
+&#125;
+</code></pre>
+<p>通过添加条件判断，<code>if (fruit)</code> 确保了对象存在时才执行减法操作。这样可以避免在找不到对象时出现错误，确保代码的稳定性。</p>
+<p>数组.filter 可以实现数组元素的删除</p>
+<p>你的代码 <code>this.fruitList = this.fruitList.filter(item =&gt; item.id !== id);</code> 是想要从 <code>fruitList</code> 数组中移除指定 <code>id</code> 的水果对象。</p>
+<p><code>filter</code> 方法用于创建一个新数组，其中包含满足指定条件的所有元素。在这里，你可以使用 <code>filter</code> 方法来过滤掉指定 <code>id</code> 的水果对象。</p>
+<p>以下是修正后的代码示例：</p>
+<pre><code>javascriptCopy Codethis.fruitList = this.fruitList.filter(item =&gt; item.id !== id);
+</code></pre>
+<p>通过使用 <code>filter</code> 方法并指定条件 <code>item.id !== id</code>，我们将筛选出 <code>id</code> 不等于给定值的水果对象，然后将结果赋值给 <code>fruitList</code> 数组。这样就实现了从数组中移除指定 <code>id</code> 的水果对象的操作。</p>
+<h1 id="综合案例购物车"><a href="#综合案例购物车" class="headerlink" title="综合案例购物车"></a>综合案例购物车</h1><p><strong>实现功能</strong></p>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230719223605712.png" alt="image-20230719223605712"></p>
+<p>需求</p>
+<p>1.渲染功能</p>
+<p>2.删除功能</p>
+<p>3.修改功能</p>
+<p>4.全选反选</p>
+<p>5.统计选中的总价和总数量</p>
+<p>6.持久化到本地</p>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230719223714850.png" alt="image-20230719223714850"></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/inputnumber.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./css/index.css&quot; /&gt;
+    &lt;title&gt;购物车&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;app-container&quot; id=&quot;app&quot;&gt;
+      &lt;!-- 顶部banner --&gt;
+      &lt;div class=&quot;banner-box&quot;&gt;&lt;img src=&quot;http://autumnfish.cn/static/fruit.jpg&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;
+      &lt;!-- 面包屑 --&gt;
+      &lt;div class=&quot;breadcrumb&quot;&gt;
+        &lt;span&gt;🏠&lt;/span&gt;
+        /
+        &lt;span&gt;购物车&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;!-- 购物车主体 --&gt;
+      &lt;div class=&quot;main&quot; v-if=&quot;fruitList.length&gt;0&quot;&gt;
+        &lt;div class=&quot;table&quot;&gt;
+          &lt;!-- 头部 --&gt;
+          &lt;div class=&quot;thead&quot;&gt;
+            &lt;div class=&quot;tr&quot;&gt;
+              &lt;div class=&quot;th&quot;&gt;选中&lt;/div&gt;
+              &lt;div class=&quot;th th-pic&quot;&gt;图片&lt;/div&gt;
+              &lt;div class=&quot;th&quot;&gt;单价&lt;/div&gt;
+              &lt;div class=&quot;th num-th&quot;&gt;个数&lt;/div&gt;
+              &lt;div class=&quot;th&quot;&gt;小计&lt;/div&gt;
+              &lt;div class=&quot;th&quot;&gt;操作&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- 身体 --&gt;
+          &lt;div class=&quot;tbody&quot;&gt;
+            &lt;div  v-for=&quot;(item,index) in fruitList&quot; :key=&quot;item.id&quot; class=&quot;tr&quot; :class=&quot;&#123;active: item.isChecked&#125;&quot;&gt;
+              &lt;div class=&quot;td&quot;&gt;&lt;input type=&quot;checkbox&quot; v-model=&quot;item.isChecked&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;td&quot;&gt;&lt;img :src=&quot;item.icon&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;
+              &lt;div class=&quot;td&quot;&gt;&#123;&#123;item.price&#125;&#125;&lt;/div&gt;
+              &lt;div class=&quot;td&quot;&gt;
+                &lt;div class=&quot;my-input-number&quot;&gt;
+                  &lt;button :disabled=&quot;item.num&lt;=1&quot; class=&quot;decrease&quot; @click=&quot;inc(item.id)&quot;&gt; - &lt;/button&gt;
+                  &lt;span class=&quot;my-input__inner&quot;&gt;&#123;&#123;item.num&#125;&#125;&lt;/span&gt;
+                  &lt;button class=&quot;increase&quot; @click=&quot;su(item.id)&quot;&gt; + &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;td&quot;&gt;&#123;&#123;item.price * item.num&#125;&#125;&lt;/div&gt;
+              &lt;div class=&quot;td&quot;&gt;&lt;button @click=&quot;del(item.id)&quot;&gt;删除&lt;/button&gt;&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- 底部 --&gt;
+        &lt;div class=&quot;bottom&quot;&gt;
+          &lt;!-- 全选 --&gt;
+          &lt;label class=&quot;check-all&quot; &gt;
+            &lt;input type=&quot;checkbox&quot; v-model=&quot;isall&quot; /&gt;
+            全选
+          &lt;/label&gt;
+          &lt;div class=&quot;right-box&quot;&gt;
+            &lt;!-- 所有商品总价 --&gt;
+            &lt;span class=&quot;price-box&quot;&gt;总价&amp;nbsp;&amp;nbsp;:&amp;nbsp;&amp;nbsp;¥&amp;nbsp;&lt;span class=&quot;price&quot;&gt;&#123;&#123;totalprice&#125;&#125;&lt;/span&gt;&lt;/span&gt;
+            &lt;!-- 结算按钮 --&gt;
+            &lt;button class=&quot;pay&quot;&gt;结算( &#123;&#123;totalcount&#125;&#125; )&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- 空车 --&gt;
+      &lt;div class=&quot;empty&quot; v-else&gt;🛒空空如也&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      const defaltArr= [
+            &#123;
+              id: 1,
+              icon: &#39;http://autumnfish.cn/static/火龙果.png&#39;,
+              isChecked: true,
+              num: 2,
+              price: 6,
+            &#125;,
+            &#123;
+              id: 2,
+              icon: &#39;http://autumnfish.cn/static/荔枝.png&#39;,
+              isChecked: false,
+              num: 7,
+              price: 20,
+            &#125;,
+            &#123;
+              id: 3,
+              icon: &#39;http://autumnfish.cn/static/榴莲.png&#39;,
+              isChecked: false,
+              num: 3,
+              price: 40,
+            &#125;,
+            &#123;
+              id: 4,
+              icon: &#39;http://autumnfish.cn/static/鸭梨.png&#39;,
+              isChecked: true,
+              num: 10,
+              price: 3,
+            &#125;,
+            &#123;
+              id: 5,
+              icon: &#39;http://autumnfish.cn/static/樱桃.png&#39;,
+              isChecked: false,
+              num: 20,
+              price: 34,
+            &#125;,
+          ]
+      const app = new Vue(&#123;
+        el: &#39;#app&#39;,
+        data: &#123;
+          fruitList: JSON.parse(localStorage.getItem(&#39;fruit&#39;))||defaltArr,
+        &#125;,
+        methods:&#123;
+          del(id)&#123;
+              this.fruitList=this.fruitList.filter(item=&gt; item.id!==id)
+          &#125;,
+          su(id)&#123;
+            const fruit=this.fruitList.find(item=&gt;item.id===id)
+            fruit.num++;
+          &#125;,
+          inc(id)&#123;
+            const fruit=this.fruitList.find(iteitem=&gt;item.id===id)
+            fruit.num--;
+          &#125;
+        &#125;,
+        computed: &#123;
+          isall:&#123;
+            get()&#123;
+            return this.fruitList.every(item=&gt; item.isChecked);
+          &#125;,
+          set(value)&#123;
+            this.fruitList.forEach(item =&gt; item.isChecked= value);
+          &#125;
+          &#125;,
+          totalcount()&#123;
+            return this.fruitList.reduce((sum,item)=&gt;item.isChecked?item.num+sum:sum=sum,0);
+          &#125;,
+          totalprice()&#123;
+            return this.fruitList.reduce((sum,item)=&gt;item.isChecked?item.num*item.price+sum:sum=sum,0);
+          &#125;
+          // isall()&#123;
+          //   //必须苏哦有的小选择框都选中我们才选中这个-every
+          //   return this.fruitList.every(item=&gt;item.isChecked)
+          // &#125;
+        &#125;,
+        watch:&#123;
+          fruitList:&#123;
+            deep:true,
+            handler(newValue)&#123;
+              localStorage.setItem(&quot;fruit&quot;,JSON.stringify(newValue))
+            &#125;
+          &#125;
+        &#125;
+      &#125;)
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="VUE的生命周期"><a href="#VUE的生命周期" class="headerlink" title="VUE的生命周期"></a>VUE的生命周期</h1><p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230719224810721.png" alt="image-20230719224810721"></p>
+<p><strong>vue的生命周期函数（钩子函数）</strong></p>
+<pre><code class="vue"> &lt;script&gt;
+    const app = new Vue(&#123;
+      el: &#39;#app&#39;,
+      data: &#123;
+        count: 100,
+        title: &#39;计数器&#39;
+      &#125;,
+      // 1. 创建阶段（准备数据）
+      beforeCreate () &#123;
+        console.log(&#39;beforeCreate 响应式数据准备好之前&#39;, this.count)
+      &#125;,
+      created () &#123;
+        console.log(&#39;created 响应式数据准备好之后&#39;, this.count)
+        // this.数据名 = 请求回来的数据
+        // 可以开始发送初始化渲染的请求了
+      &#125;,
+
+      // 2. 挂载阶段（渲染模板）
+      beforeMount () &#123;
+        console.log(&#39;beforeMount 模板渲染之前&#39;, document.querySelector(&#39;h3&#39;).innerHTML)
+      &#125;,
+      mounted () &#123;
+        console.log(&#39;mounted 模板渲染之后&#39;, document.querySelector(&#39;h3&#39;).innerHTML)
+        // 可以开始操作dom了
+      &#125;,
+
+      // 3. 更新阶段(修改数据 → 更新视图)
+      beforeUpdate () &#123;
+        console.log(&#39;beforeUpdate 数据修改了，视图还没更新&#39;, document.querySelector(&#39;span&#39;).innerHTML)
+      &#125;,
+      updated () &#123;
+        console.log(&#39;updated 数据修改了，视图已经更新&#39;, document.querySelector(&#39;span&#39;).innerHTML)
+      &#125;,
+
+      // 4. 卸载阶段
+      beforeDestroy () &#123;
+        console.log(&#39;beforeDestroy, 卸载前&#39;)
+        console.log(&#39;清除掉一些Vue以外的资源占用，定时器，延时器...&#39;)
+      &#125;,
+      destroyed () &#123;
+        console.log(&#39;destroyed，卸载后&#39;)
+      &#125;
+    &#125;)
+  &lt;/script&gt;
+</code></pre>
+<p>此函数是在数据创建完毕</p>
+<p>钩子函数 一般操作数据需要在created（）函数中进行</p>
+<p>此钩子函数是视图渲染完毕</p>
+<p>一般操作mounted中进行dom操作</p>
+<h1 id="VUECLI-工程化构建"><a href="#VUECLI-工程化构建" class="headerlink" title="VUECLI 工程化构建"></a>VUECLI 工程化构建</h1><p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230720223909148.png" alt="image-20230720223909148"></p>
+<p><strong>工程化页面不在index.html下写代码</strong></p>
+<p>index只是容器功能  App.vue是页面编写页面代码</p>
+<p>main.js 是打包的入口文件</p>
+<p>index.html第一个index</p>
+<pre><code class="vue">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1.0&quot;&gt;
+    &lt;link rel=&quot;icon&quot; href=&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;&gt;
+    &lt;title&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- 兼容：给不支持js的浏览器一个提示 --&gt;
+    &lt;noscript&gt;
+      &lt;strong&gt;We&#39;re sorry but &lt;%= htmlWebpackPlugin.options.title %&gt; doesn&#39;t work properly without JavaScript enabled. Please enable it to continue.&lt;/strong&gt;
+    &lt;/noscript&gt;
+
+    &lt;!-- Vue所管理的容器：将来创建结构动态渲染这个容器 --&gt;
+    &lt;div id=&quot;app&quot;&gt;
+      &lt;!-- 工程化开发模式中：这里不再直接编写模板语法，通过 App.vue 提供结构渲染 --&gt;
+    &lt;/div&gt;
+
+    &lt;!-- built files will be auto injected --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>main.js</p>
+<pre><code>
+</code></pre>
+<p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230720233732764.png" alt="image-20230720233732764"></p>
+<h3 id="局部注册和全局注册"><a href="#局部注册和全局注册" class="headerlink" title="局部注册和全局注册"></a>局部注册和全局注册</h3><p><img src="C:\Users\李开恩\AppData\Roaming\Typora\typora-user-images\image-20230721001822698.png" alt="image-20230721001822698"></p>
+<p>实例在APp.vue局部注册</p>
+<p>import HmHeader from ‘.&#x2F;components&#x2F;HmHeader.vue’</p>
+<p>import HmMain from ‘.&#x2F;components&#x2F;HmMain.vue’</p>
+<p>import HmFooter from ‘.&#x2F;components&#x2F;HmFooter.vue’</p>
+<p>export default {</p>
+<p> components: {</p>
+<p>  &#x2F;&#x2F; ‘组件名’: 组件对象</p>
+<p>  HmHeader: HmHeader,</p>
+<p>  HmMain,</p>
+<p>  HmFooter</p>
+<p> }</p>
+<p>}</p>
+<pre><code>&lt;template&gt;
+  &lt;div class=&quot;App&quot;&gt;
+    &lt;!-- 头部组件 --&gt;
+    &lt;HmHeader&gt;&lt;/HmHeader&gt;
+    &lt;!-- 主体组件 --&gt;
+    &lt;HmMain&gt;&lt;/HmMain&gt;
+    &lt;!-- 底部组件 --&gt;
+    &lt;HmFooter&gt;&lt;/HmFooter&gt;
+
+    &lt;!-- 如果 HmFooter + tab 出不来 → 需要配置 vscode
+         设置中搜索 trigger on tab → 勾上
+    --&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import HmHeader from &#39;./components/HmHeader.vue&#39;
+import HmMain from &#39;./components/HmMain.vue&#39;
+import HmFooter from &#39;./components/HmFooter.vue&#39;
+export default &#123;
+  components: &#123;
+    // &#39;组件名&#39;: 组件对象
+    HmHeader: HmHeader,
+    HmMain,
+    HmFooter
+  &#125;
+&#125;
+&lt;/script&gt;
+
+&lt;style&gt;
+.App &#123;
+  width: 600px;
+  height: 700px;
+  background-color: #87ceeb;
+  margin: 0 auto;
+  padding: 20px;
+&#125;
+&lt;/style&gt;
+</code></pre>
+<p>全局注册注册到mian.js</p>
+<p>用Vue.component(‘HmButton’, HmButton)</p>
+<pre><code>// 文件核心作用：导入App.vue，基于App.vue创建结构渲染index.html
+import Vue from &#39;vue&#39;
+import App from &#39;./App.vue&#39;
+// 编写导入的代码，往代码的顶部编写(规范)
+import HmButton from &#39;./components/HmButton&#39;
+Vue.config.productionTip = false
+
+// 进行全局注册 → 在所有的组件范围内都能直接使用
+// Vue.component(组件名，组件对象)
+Vue.component(&#39;HmButton&#39;, HmButton)
+
+
+// Vue实例化，提供render方法 → 基于App.vue创建结构渲染index.html
+new Vue(&#123;
+  // render: h =&gt; h(App),
+  render: (createElement) =&gt; &#123;
+    // 基于App创建元素结构
+    return createElement(App)
+  &#125;
+&#125;).$mount(&#39;#app&#39;)
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/">https://349264976.github.io/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/07/17/javascript%E5%85%B3%E9%94%AE%E7%82%B9/" title="javascript关键点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">javascript关键点</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue%E5%AD%A6%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text">vue学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VUE%E7%9A%84%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">VUE的指令操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%B0%8F%E6%A1%88%E4%BE%8B"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">第一个小案例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#computed%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="toc-number">1.0.0.2.1.</span> <span class="toc-text">computed计算属性</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%96%B9%E6%B3%95"><span class="toc-number">1.0.1.</span> <span class="toc-text">重要方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%E8%B4%AD%E7%89%A9%E8%BD%A6"><span class="toc-number">2.</span> <span class="toc-text">综合案例购物车</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VUE%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">3.</span> <span class="toc-text">VUE的生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#VUECLI-%E5%B7%A5%E7%A8%8B%E5%8C%96%E6%9E%84%E5%BB%BA"><span class="toc-number">4.</span> <span class="toc-text">VUECLI 工程化构建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C%E5%92%8C%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C"><span class="toc-number">4.0.1.</span> <span class="toc-text">局部注册和全局注册</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/17/VUE%E5%AD%A6%E4%B9%A0/" title="VUE学习">VUE学习</a><time datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/17/javascript%E5%85%B3%E9%94%AE%E7%82%B9/" title="javascript关键点">javascript关键点</a><time datetime="2023-07-17T11:37:11.000Z" title="发表于 2023-07-17 19:37:11">2023-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC02%E7%AB%A0%20MySQL%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95/" title="第02章 MySQL的数据目录">第02章 MySQL的数据目录</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/hexo%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hexo基本操作">hexo基本操作</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/15/%E7%AC%AC03%E7%AB%A0%20%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86/" title="第03章 用户与权限管理">第03章 用户与权限管理</a><time datetime="2023-07-15T11:37:11.000Z" title="发表于 2023-07-15 19:37:11">2023-07-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
