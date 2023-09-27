@@ -1,0 +1,734 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>docker学习 | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="nginx了解2、启动nginx 有很多种方法启动nginx (1)直接双击nginx.exe，双击后一个黑色的弹窗一闪而过 (2)打开cmd命令窗口，切换到nginx解压目录下，输入命令 nginx.exe ，回车即可 3、检查nginx是否启动成功 直接在浏览器地址栏输入网址 http:&#x2F;&#x2F;localhost:80 回车，出现以下页面说明启动成功！  4、配置监听 nginx的配置文件是con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker学习">
+<meta property="og:url" content="https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="fuguangmengying">
+<meta property="og:description" content="nginx了解2、启动nginx 有很多种方法启动nginx (1)直接双击nginx.exe，双击后一个黑色的弹窗一闪而过 (2)打开cmd命令窗口，切换到nginx解压目录下，输入命令 nginx.exe ，回车即可 3、检查nginx是否启动成功 直接在浏览器地址栏输入网址 http:&#x2F;&#x2F;localhost:80 回车，出现以下页面说明启动成功！  4、配置监听 nginx的配置文件是con">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://349264976.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-09-19T13:24:15.000Z">
+<meta property="article:modified_time" content="2023-09-27T12:15:44.327Z">
+<meta property="article:author" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://349264976.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'docker学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-27 20:15:44'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">docker学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-19T13:24:15.000Z" title="发表于 2023-09-19 21:24:15">2023-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-27T12:15:44.327Z" title="更新于 2023-09-27 20:15:44">2023-09-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="docker学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="nginx了解"><a href="#nginx了解" class="headerlink" title="nginx了解"></a>nginx了解</h3><p><strong>2、启动nginx</strong></p>
+<p>有很多种方法启动nginx</p>
+<p>(1)直接双击nginx.exe，双击后一个黑色的弹窗一闪而过</p>
+<p>(2)打开cmd命令窗口，切换到nginx解压目录下，输入命令 <code>nginx.exe</code> ，回车即可</p>
+<p><strong>3、检查nginx是否启动成功</strong></p>
+<p>直接在浏览器地址栏输入网址 <a target="_blank" rel="noopener" href="http://localhost/">http://localhost:80</a> 回车，出现以下页面说明启动成功！</p>
+<p><img src="https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/01/25/kuangstudya21688c8-159e-4caa-8e65-3dc056b6b78e.png" alt="img"></p>
+<p><strong>4、配置监听</strong></p>
+<p>nginx的配置文件是conf目录下的nginx.conf，默认配置的nginx监听的端口为80，如果80端口被占用可以修改为未被占用的端口即可。</p>
+<p><img src="https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/01/25/kuangstudyf23105c4-b0b2-4e22-a1bf-b8098f40c144.png" alt="img"></p>
+<p>当我们修改了nginx的配置文件nginx.conf 时，不需要关闭nginx后重新启动nginx，只需要执行命令 <code>nginx -s reload</code> 即可让改动生效</p>
+<p><strong>5、关闭nginx</strong></p>
+<p>如果使用cmd命 令窗口启动nginx， 关闭cmd窗口是不能结束nginx进程的，可使用两种方法关闭nginx</p>
+<p>(1)输入nginx命令 <code>nginx -s stop</code>(快速停止nginx) 或 <code>nginx -s quit</code>(完整有序的停止nginx)</p>
+<p>(2)使用taskkill <code>taskkill /f /t /im nginx.exe</code></p>
+<pre><code>taskkill是用来终止进程的，/f是强制终止 ./t终止指定的进程和任何由此启动的子进程。/im示指定的进程名称 .
+</code></pre>
+<h2 id="linux下安装"><a href="#linux下安装" class="headerlink" title="linux下安装"></a>linux下安装</h2><p><strong>1、安装gcc</strong></p>
+<p>安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：</p>
+<pre><code>yum install gcc-c++
+</code></pre>
+<p><strong>2、PCRE pcre-devel 安装</strong></p>
+<p>PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：</p>
+<pre><code>yum install -y pcre pcre-devel
+</code></pre>
+<p><strong>3、zlib 安装</strong></p>
+<p>zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。</p>
+<pre><code>yum install -y zlib zlib-devel
+</code></pre>
+<p><strong>4、OpenSSL 安装</strong><br>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。<br>nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。</p>
+<pre><code>yum install -y openssl openssl-devel
+</code></pre>
+<p><strong>5、下载安装包</strong></p>
+<p>手动下载.tar.gz安装包，地址：<a target="_blank" rel="noopener" href="https://nginx.org/en/download.html">https://nginx.org/en/download.html</a></p>
+<p><img src="https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/01/25/kuangstudyf51b946d-fda4-4675-b913-2084e028a5c0.png" alt="img"></p>
+<p>下载完毕上传到服务器上 &#x2F;root</p>
+<p><strong>6、解压</strong></p>
+<pre><code>tar -zxvf nginx-1.18.0.tar.gzcd nginx-1.18.0
+</code></pre>
+<p><img src="https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/01/25/kuangstudyd8290598-ede7-4b4b-875b-2f447a9c001f.png" alt="img"></p>
+<p><strong>7、配置</strong></p>
+<p>使用默认配置，在nginx根目录下执行</p>
+<pre><code>./configuremakemake install
+</code></pre>
+<p>查找安装路径： <code>whereis nginx</code></p>
+<p><img src="https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/01/25/kuangstudyf80f8dc2-d5df-4bc2-933d-6ce11f388f6e.png" alt="img"></p>
+<h2 id="Nginx常用命令"><a href="#Nginx常用命令" class="headerlink" title="Nginx常用命令"></a>Nginx常用命令</h2><pre><code>cd /usr/local/nginx/sbin/./nginx  启动./nginx -s stop  停止./nginx -s quit  安全退出./nginx -s reload  重新加载配置文件ps aux|grep nginx  查看nginx进程
+</code></pre>
+<p>启动成功访问 服务器ip:80</p>
+<p><img src="https://kuangstudy.oss-cn-beijing.aliyuncs.com/bbs/2021/01/25/kuangstudyd64b251b-817c-436b-b7a0-57da7bb48cd1.png" alt="img"></p>
+<p>注意：如何连接不上，检查阿里云安全组是否开放端口，或者服务器防火墙是否开放端口！<br>相关命令：</p>
+<pre><code># 开启service firewalld start# 重启service firewalld restart# 关闭service firewalld stop# 查看防火墙规则firewall-cmd --list-all# 查询端口是否开放firewall-cmd --query-port=8080/tcp# 开放80端口firewall-cmd --permanent --add-port=80/tcp# 移除端口firewall-cmd --permanent --remove-port=8080/tcp#重启防火墙(修改配置后要重启防火墙)firewall-cmd --reload# 参数解释1、firwall-cmd：是Linux提供的操作firewall的一个工具；2、--permanent：表示设置为持久；3、--add-port：标识添加的端口；
+</code></pre>
+<h1 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h1><pre><code>upstream lb&#123;    server 127.0.0.1:8080 weight=1;    server 127.0.0.1:8081 weight=1;&#125;location / &#123;    proxy_pass http://lb;&#125;
+</code></pre>
+<h1 id="Docker-学习"><a href="#Docker-学习" class="headerlink" title="Docker 学习"></a>Docker 学习</h1><h3 id="docker重要解释"><a href="#docker重要解释" class="headerlink" title="docker重要解释"></a>docker重要解释</h3><ul>
+<li><p>镜像Image   相当于一个类模板  每个镜像都是一个文件</p>
+</li>
+<li><p>容器container 容器时镜像中的一个实例 像相当于一个类模板  每个容器都是一个实例</p>
+</li>
+<li><p>仓库repository 集中管理存放镜像的地方  (公开库)(私有库)</p>
+</li>
+</ul>
+<h1 id="Docker基础篇"><a href="#Docker基础篇" class="headerlink" title="Docker基础篇"></a>Docker基础篇</h1><p>开始时间：2022-6-10 12:11:19</p>
+<p>结束时间：2022-6-12 17:27:38</p>
+<iframe class="ne-thirdparty-iframe" data-testid="ne-thirdparty-reader-iframe" sandbox="allow-forms allow-orientation-lock allow-presentation allow-same-origin allow-scripts allow-popups allow-downloads" data-src="https://music.163.com/outchain/player?type=2&amp;id=1825998212&amp;auto=0&amp;height=66" src="https://music.163.com/outchain/player?type=2&amp;id=1825998212&amp;auto=0&amp;height=66" frameborder="0" allowfullscreen style="box-sizing: border-box; position: relative; width: 746px; height: 88px; top: 0px; left: 0px; background: var(--larkx-editor-background-primary);"></iframe>
+
+
+
+<p> 一、Docker概述 </p>
+<ol>
+<li>Docker简介</li>
+</ol>
+<p> 1）为什么有Docker? </p>
+<p>Docker是基于GO语言实现的云开源项目，是一个虚拟化容器技术。</p>
+<p>为了解决部署过程中遇见的版本、配置问题，Docker给出了一个标准化的解决方案</p>
+<p>●系统平滑移植，容器虚拟化技术。</p>
+<p>简单来说：</p>
+<p>1环境不一致</p>
+<p>2集群配置困难</p>
+<p>Docker：将源码 + 配置 + 环境 + 版本打包成为一个镜像文件。</p>
+<p>Docker的理念：Build, Ship and Run Any App, Anywhere，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的APP及其运行环境能做到一次镜像,处处运行。</p>
+<p> 2）Docker的基本组成 </p>
+<p>Docker的基本组成部分：</p>
+<p>●镜像（image）</p>
+<p>●容器（container）</p>
+<p>●仓库（repository）</p>
+<ul>
+<li>镜像</li>
+</ul>
+<p>●Docker镜像就是一个只读的模板，镜像可以用来创建Docker容器，一个镜像可以创建多个容器。</p>
+<p>●类似于Java中的类模板。</p>
+<ul>
+<li>容器</li>
+</ul>
+<p>●Docker利用容器独立运行的一个或一组应用，应用程序或服务运行在容器里面，容器就类似于一个虚拟化的运行环境，容器是用镜像创建的运行实例。</p>
+<p>●最小配置的Linux环境。</p>
+<p>●类似于Java中使用类模板创建的类实例。</p>
+<ul>
+<li>仓库</li>
+</ul>
+<p>●Docker仓库是集中存放镜像文件的场所。</p>
+<p>●仓库分为公开仓库和私有仓库两种。</p>
+<p>●最大的公开仓库是Docker官方的Docker Hub：<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<ol start="2">
+<li>容器和虚拟机的比较</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654835911836-d4ec43af-8dfc-44eb-b3bf-4f926a48d8c0.png?x-oss-process=image/resize,w_617,limit_0" alt="image.png"></p>
+<p> 1）传统虚拟机 </p>
+<p>它可以在一种操作系统里面运行另一种操作系统，而对于底层系统来说，虚拟机就是一个普通文件，不需要了就删掉，对其他部分毫无影响。</p>
+<p>这类虚拟机完美的运行了另一套系统，能够使应用程序，操作系统和硬件三者之间的逻辑不变。  </p>
+<p>虚拟机的缺点：</p>
+<p>1资源占用多</p>
+<p>2冗余步骤多</p>
+<p>3启动慢</p>
+<p> 2）容器虚拟化技术 </p>
+<p>为了解决传统虚拟机的缺点</p>
+<p>Linux容器(Linux Containers，缩写为 LXC)</p>
+<p>Linux容器是与系统其他部分隔离开的一系列进程，从另一个镜像运行，并由该镜像提供支持进程所需的全部文件。</p>
+<p>容器提供的镜像包含了应用的所有依赖项，因而在从开发到测试再到生产的整个过程中，它都具有可移植性和一致性。</p>
+<p>即：Docker容器是在操作系统层面上实现虚拟化，直接复用本地主机的操作系统，虚拟软件所需的最小化配置。</p>
+<p> 3）对比 </p>
+<p>比较了 Docker和传统虚拟化方式的不同之处：</p>
+<p>●传统虚拟机技术是虚拟出一套硬件后，在其上运行一个完整操作系统，在该系统上再运行所需应用进程。</p>
+<p>●容器内的应用进程直接运行于宿主的内核，容器内没有自己的内核且也没有进行硬件虚拟。因此容器要比传统虚拟机更为轻便。</p>
+<p>●每个容器之间互相隔离，每个容器有自己的文件系统 ，容器之间进程不会相互影响，能区分计算资源。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654911061256-2b9c246c-6fd4-4caa-8731-bd89f5c69c64.png" alt="image.png"></p>
+<p> 4）为什么Docker会比VM虚拟机快？ </p>
+<ul>
+<li>Docker有比虚拟机更少的抽象层：</li>
+</ul>
+<p>●由于Docker不需要Hypervisor（虚拟机）实现硬件资源虚拟化，运行在Docker容器上的程序直接使用的都是实际物理机的硬件资源，因此在CPU、内存利用率上Docker有明显优势。</p>
+<ul>
+<li>Docker利用的是宿主机的内核，而不需要加载操作系统OS内核：</li>
+</ul>
+<p>●当新建一个容器时，Docker不需要和虚拟机一样重新加载一个操作系统内核。进而避免引寻、加载操作系统内核返回等比较耗时耗资源的过程。当新建一个虚拟机时，虚拟机软件需要加载OS，返回新建过程是分钟级别的。而Docker由于直接利用宿主机的操作系统，则省略了返回过程，因此新建一个Docker容器只需要几秒钟。</p>
+<p>Docker容器的本质就是一个进程。</p>
+<ol start="3">
+<li>Docker的架构</li>
+</ol>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654838137985-a5def20f-2a43-4480-9583-d0c3d29a7811.png" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654910906955-92722db3-7692-4021-bfa8-c314da1f9d24.png" alt="image.png"></p>
+<ol start="4">
+<li>Docker的工作流程</li>
+</ol>
+<p>Docker是一个 C&#x2F;S（Client-Server） 结构的系统，后端是一个松耦合架构，众多模块各司其职。</p>
+<p>Docker守护进程运行在主机上，然后通过Socket连接从客户端访问，守护进程从容器接收命令并管理运行在主机上的容器。</p>
+<p>1用户是使用Docker Client 与 Docker Daemon 建立通信，并发送请求给后者</p>
+<p>aDocker Daemon 作为 Docker架构的主体部分，首先提供 Docker Server 的功能使其可以接收 Docker Client 的请求。</p>
+<p>2Docker Engine 执行 Docker内部的一系列工作，每一项工作都是以一个 Job的形式存在。</p>
+<p>3Job 的运行过程中，当需要容器镜像时，则从 Docker Registry 中下载镜像，并通过镜像管理驱动 Graph Driver 将下载镜像以 Graph 的形式存储</p>
+<p>4当需要为 Docker创建网络环境时，通过网络管理驱动 Network driver 创建并配置 Docker容器网络环境</p>
+<p>5当需要限制 Docker容器运行资源或执行用户指令等操作时，则通过 Exec driver 来完成</p>
+<p>6Libcontainer是一项独立的容器管理包，Network driver 以及 Exec driver 都是通过 Libcontainer来实现具体对容器进行的操作</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654838248546-50fc8784-8517-44f0-a4c2-049313edb1cd.png?x-oss-process=image/resize,w_750,limit_0" alt="24825fc01ebc29a7a7276a064ff9e958_1652093347909-4fcf65d1-da12-47cb-9a2f-0c4528d7e4c9.png"></p>
+<p> 二、Docker的安装以及下载配置 </p>
+<ol>
+<li>下载地址</li>
+</ol>
+<p>docker官网: <a target="_blank" rel="noopener" href="http://www.docker.com/">http://www.docker.com</a></p>
+<p>Docker Hub官网: <a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p> 2.Docker的先决条件 </p>
+<p>Docker并非是一个通用的容器工具，它依赖于已存在并运行的Linux内核环境，因此，Docker必须部署在Linux内核的系统上。</p>
+<p>实质上是在Linux下创建了一个隔离的文件环境，因此它的效率等同于所部署的Linux主机。</p>
+<p>目前，要求系统为64位、Linux系统内核版本为 3.8以上，这里选用Centos7.x</p>
+<p>cat &#x2F;etc&#x2F;redhat- release：查看版本</p>
+<p>uname -r：查看内核</p>
+<ol start="3">
+<li>CentOs7下安装Docker</li>
+</ol>
+<p> 1）卸载 </p>
+<p>如果之前安装过Docker，需要先卸载旧版本：</p>
+<p>旧版本的Docker引擎包可能叫做：docker、docker-engine。<br>新版本的Docker引擎包叫做：docker-ce</p>
+<p> 2）yum资源库 </p>
+<p>1安装yum-config-manager</p>
+<p>2配置Docker的资源库地址：</p>
+<p>●官方地址：（比较慢，不推荐）</p>
+<p>●阿里云镜像地址：</p>
+<p>阿里云官网提供了很多资源镜像，镜像地址：<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com,进入之后可以选择自己需要的资源进行配置/">https://mirrors.aliyun.com，进入之后可以选择自己需要的资源进行配置</a></p>
+<p>●创建缓存（可选）：</p>
+<p> 3）安装Docker引擎 </p>
+<p>安装最新版本的Docker引擎、Docker客户端：</p>
+<p>安装指定版本：</p>
+<p> 4）启动docker引擎 </p>
+<p>如果没有启动Docker引擎，那么执行 docker version查看版本号时，只能看到 Client: Docker Engine（Docker引擎客户端）的版本号。</p>
+<p>启动Docker引擎：</p>
+<p> 5）卸载Docker </p>
+<p>卸载Docker步骤：</p>
+<p>1 关闭服务 </p>
+<p>2 使用yum删除docker引擎 </p>
+<p>3 删除镜像、容器、卷、自定义配置等文件 </p>
+<p> 6）进行测试 </p>
+<ol start="4">
+<li>Docker下载加速</li>
+</ol>
+<p> 1）容器镜像仓库 </p>
+<p>使用网易数帆、阿里云等容器镜像仓库进行下载。</p>
+<p>例如，下载网易数帆镜像中的mysql（网易数帆的地址为 hub.c.163.com，网易数帆对dockerhub官方的镜像命名空间为 library）。</p>
+<p> 2）阿里云配置加速 </p>
+<p>登录阿里云，进入 工作台 -&gt; 容器镜像服务 -&gt; 镜像工具 -&gt; 镜像加速器。</p>
+<p>里面提供了一个加速器地址：<a href="https://xxxxx.mirror.aliyuncs.com，将该地址配置到Docker中：">https://xxxxx.mirror.aliyuncs.com，将该地址配置到Docker中：</a></p>
+<p>在daemon.json中写入以下内容：（即加速器地址）</p>
+<p>然后刷新配置、重启docker即可：</p>
+<p>使用阿里云配置加速可以直接下载官方的镜像文件且镜像tag为官方tag，不需要加上云服务商的地址。</p>
+<p> 三、常用命令 </p>
+<p>主要分为三类</p>
+<p>1帮助启动类命令</p>
+<p>2镜像命令</p>
+<p>3容器命令</p>
+<ol>
+<li>帮助启动类命令</li>
+</ol>
+<p>●启动docker：</p>
+<p>●停止Docker：</p>
+<p>●重启Docker：</p>
+<p>●查看状态：</p>
+<p>●设置开机自启：</p>
+<ol start="2">
+<li>帮助命令</li>
+</ol>
+<p>●查看Docker概要</p>
+<p>●帮助</p>
+<p>●对具体的命令进行求助</p>
+<p>●查看版本号</p>
+<ol start="3">
+<li>镜像命令</li>
+</ol>
+<p> 1）查看窗口中的镜像 </p>
+<p>●-a：列出本地的所有镜像（包括历史镜像）</p>
+<p>●-q：只显示镜像ID</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654912011348-bf88d89c-9068-46e8-83be-390c174cfa63.png" alt="image.png"></p>
+<p>●REPOSITORY：表示镜像的仓库源</p>
+<p>●TAG：镜像的标签，版本号</p>
+<p>●IMAGE ID：镜像ID</p>
+<p>●CREATED：镜像创建时间</p>
+<p>●SIZE：镜像大小</p>
+<p>同一仓库源可以有多个 TAG版本，代表这个仓库源的不同个版本，我们使用 REPOSITORY:TAG 来定义不同的镜像。</p>
+<p>如果不指定TAG版本，那么Docker将默认使用 :latest 镜像，即最后一次更新。</p>
+<p> 2）搜索远程仓库中的镜像 </p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654912624312-2606d38d-89ef-469e-b6f6-543ea5de9fec.png" alt="image.png"></p>
+<p>●NAME：镜像名称。</p>
+<p>●DESCRIPTION：镜像描述。</p>
+<p>●Stars：点赞数量。</p>
+<p>●OFFIVIAL：是否为官方认证。</p>
+<p>●AUTOMATED：是否是自动构建的。</p>
+<p>默认在Docker hub中进行搜索</p>
+<p>●–limit 数量：只显示前数量项</p>
+<p> 3）拉取远程仓库中的镜像 </p>
+<ul>
+<li>获取最新版本镜像</li>
+</ul>
+<p>等价于：docker pull 镜像名称:latest</p>
+<ul>
+<li>获取指定版本镜像</li>
+</ul>
+<p> 4）查看存储空间使用情况 </p>
+<p> 5）删除镜像 </p>
+<p>可以使用空格分隔镜像名称&#x2F;ID，删除多个镜像。</p>
+<p>删除全部镜像</p>
+<ul>
+<li>强制删除</li>
+</ul>
+<ol start="4">
+<li>容器命令</li>
+</ol>
+<p>前提：有了镜像才能创建容器。</p>
+<p> 1）新建并启动容器 </p>
+<ul>
+<li>options</li>
+</ul>
+<p>●–name&#x3D;名称：为容器指定一个名称，不指定则随机分配。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654916058237-3cdf2a07-ed7b-4c77-9b89-ddfa8e390506.png" alt="image.png"></p>
+<p>●-d：后台运行容器并返回容器ID，即：启动守护式容器（后台运行）。</p>
+<p>●-i：以交互模式运行容器，通常与-t同时使用。</p>
+<p>●-t：为容器重新分配一个伪输入终端，通常与-i同时使用。</p>
+<p>○-it：启动交互式容器（前台有伪终端，等待进行交互）</p>
+<p>●-P：随机端口映射，注意是大写。</p>
+<p>●-p：指定端口映射（常用），注意是小写。</p>
+<p>○-p 主机端口:docker容器端口</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654915562718-bad7d1d2-686e-417d-94db-8556733a1935.png?x-oss-process=image/resize,w_750,limit_0" alt="image.png"></p>
+<p>●bash：是添加shell接口。</p>
+<p>●可以使用exit退出当前终端</p>
+<p>在使用完run命令以后，都会使用ps命令查看是否启动成功。</p>
+<p> 2）列出当前正在运行的容器 </p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654915831941-e6cfbbc2-4f88-425b-b2bb-610fb745c584.png" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654915871061-f7e00929-cca5-4ba1-ab78-8e5d3745d7b9.png" alt="image.png"></p>
+<p> ：随机分配的名称。</p>
+<ul>
+<li>options</li>
+</ul>
+<p>●-a：列出当前所有正在运行的容器 + 历史上运行过的容器</p>
+<p>○up：当前正在运行的。</p>
+<p>○exited：历史上存在过的。</p>
+<p>●-l：显示最近创建的容器。</p>
+<p>●-n 数字：显示最近数字个创建的容器。</p>
+<p>●-q：静默模式，只显示容器编号。</p>
+<p> 3）退出、启动停止的容器、重启、强制停止 </p>
+<ul>
+<li>容器停止</li>
+</ul>
+<p>exit：退出当前容器，容器停止。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654917324547-a93d0ca6-9a9e-438a-9e8b-976443c787c7.png" alt="image.png"></p>
+<ul>
+<li>容器不停止</li>
+</ul>
+<p>ctrl + q + p：退出当前容器，容器不停止。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654917312976-fbc893c0-80c6-4c34-9b23-d47aa5986c86.png" alt="image.png"></p>
+<ul>
+<li><p>启动停止的容器 </p>
+</li>
+<li><p>重启容器 </p>
+</li>
+<li><p>停止容器 </p>
+</li>
+<li><p>强行停止容器</p>
+</li>
+</ul>
+<p> 4）删除容器 </p>
+<p>注意区别 rmi 和 rm</p>
+<ul>
+<li><p>删除已停止容器 </p>
+</li>
+<li><p>强制删除正在运行容器 </p>
+</li>
+<li><p>一次删除多个容器实例</p>
+</li>
+</ul>
+<ol start="5">
+<li>容器命令实例（重要）</li>
+</ol>
+<p>1使用redis 6.0.8</p>
+<p> 1）启动守护式容器（后台服务器） </p>
+<p>Docker中如果想要容器后台运行，那么就必须有一个前台进程。</p>
+<p>就是说，想要容器在后台运行，那么它必须要有一个前台进程</p>
+<p>进行对比</p>
+<p> 2）获取容器的信息 </p>
+<ul>
+<li><p>查看容器日志 </p>
+</li>
+<li><p>查看容器内运行的进程 </p>
+</li>
+<li><p>查看容器内部细节</p>
+</li>
+</ul>
+<p> 3）与正在运行的容器进行交互 </p>
+<p>1创建一个unbunt容器，并使用cttl + p + q退出。</p>
+<ul>
+<li>方法一：exec</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654920498142-a0e58b7e-0350-4731-96a9-822beee28d67.png?x-oss-process=image/resize,w_734,limit_0" alt="image.png"></p>
+<p>后面一定要加 bash!!!!</p>
+<ul>
+<li>方法二：attach</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654920482826-b570d49e-bcb1-41b1-9ee0-72c4cf1ff9b8.png" alt="image.png"></p>
+<ul>
+<li>exec和attach的区别</li>
+</ul>
+<p>●attach：进入容器中启动命令终端，不会启动新的进程，使用exit会导致容器的退出。</p>
+<p>●exec：在容器中打开新的终端，可以启动新的进程，使用exit只会退出当前终端，不会退出容器。</p>
+<p>推荐使用exec</p>
+<ol start="6">
+<li>容器拷贝文件到主机上（重要）</li>
+</ol>
+<p>把容器中的重要文件转移到主机上。</p>
+<p>此时容器中&#x2F;tmp&#x2F;下存在文件hello.txt</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654923239520-9acf7d61-d705-44d7-aed4-0f188d18a760.png" alt="image.png"></p>
+<ol start="7">
+<li>导入和导出容器（重要）</li>
+</ol>
+<p>将整个容器进行备份。</p>
+<p>●export：导出容器的内容作为一个tar归档文件。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654923659556-4411966f-1a09-465b-afcf-5f50e9891211.png" alt="image.png"></p>
+<p>●import：从tar包中创建一个新的文件系统再导入镜像</p>
+<p>●镜像用户：类似于Java中的包名。</p>
+<p>●镜像名：镜像的名称，可以自定义。</p>
+<p>●镜像版本号：可以自定义。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654924261976-e9550b44-7dcd-450d-9723-e108cc2fe417.png?x-oss-process=image/resize,w_901,limit_0" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654924577731-002f4f19-3f5b-4238-bc49-0fad7e37f593.png" alt="image.png"></p>
+<ol start="8">
+<li>其他命令</li>
+</ol>
+<ul>
+<li>修改镜像名称</li>
+</ul>
+<p>实际上是创建了一个新的镜像。</p>
+<p> 四、Docker镜像 </p>
+<ol>
+<li>是什么？</li>
+</ol>
+<p>●是一种轻量级、可执行的独立软件包，它包含运行某个软件所需的所有内容，我们把应用程序和配置依赖打包好形成一个可交付的运行环境（包括代码、运行时需要的库、环境变量和配置文件等），这个打包好的运行环境就是image镜像文件。</p>
+<p>●只有通过这个镜像文件才能生成Docker容器实例。</p>
+<p>●镜像是分层的，是有层次结构的，支持扩展现有的镜像，从而创建一个新的镜像，新镜像是从Base镜像一层一层叠加生成的。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654926902677-818a9646-2aa6-4d1b-9e56-7c3d67953800.png" alt="e2cbefdb5af44b79835584f335b2b649_1652093459380-335e0f0e-1213-47d9-a17b-f49734699ef2.png"></p>
+<p>镜像分层最大的好处：共享资源、方便复制迁移、方便复用。</p>
+<ol start="2">
+<li>镜像中的层次结构</li>
+</ol>
+<p> 1）UnionFS文件系统 </p>
+<p>●是一种分层、轻量级并且高性能的文件系统，它支持对文件系统的修改作为一次提交来一层层的叠加，同时可以将不同目录挂载到同一个虚拟文件系统下。</p>
+<p>●Union文件系统是 Docker镜像的基础。</p>
+<p>●镜像可以通过分层来进行继承，基于基础镜像（没有父镜像），可以制作各种具体的应用镜像。</p>
+<p>●特性：一次同时加载多个文件系统，但从外面看起来，只能看到一个文件系统，联合加载会把各层文件系统叠加起来，这样最终的文件系统会包含所有底层的文件和目录。</p>
+<p> 2）Docker的加载原理 </p>
+<p>Docker的镜像实际上由一层一层的文件系统组成，这种层级的文件系统UnionFS。</p>
+<p>bootfs主要包含bootloader和kernel, bootloader主要是引导加载kernel， Linux刚启动时会加载bootfs文件系统，在Docker镜像的最底层是引导文件系统bootfs。</p>
+<p>rootfs，在bootfs之上。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/29162123/1654926817677-1433db30-e780-476c-88fc-b44a679fd66f.jpeg?x-oss-process=image/resize,w_317,limit_0/interlace,1" alt="5207c77a9c8ed25adce1a3e543d269e5_1652093445038-27095471-f01f-4978-a28f-d8e2df893dab_x-oss-process=image%2Fresize%2Cw_633%2Climit_0.jpeg"></p>
+<ol start="3">
+<li>容器层</li>
+</ol>
+<p>当容器启动时，一个新的可写层将被加载到镜像的顶部，这一层称为容器层，容器层下都称为镜像层。</p>
+<p>所有对容器的修改都只会发生在容器层中，镜像层是只读的。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/jpeg/29162123/1654927053953-85b8587c-d37e-4fc9-9c91-2dbd9a892c20.jpeg?x-oss-process=image/resize,w_656,limit_0/interlace,1" alt="3d3598a1c9e6c46446e7066ed542c3db_1652093466220-a1c70673-7ca7-4025-9432-d89152439000_x-oss-process=image%2Fresize%2Cw_800%2Climit_0.jpeg"></p>
+<ol start="4">
+<li>Commit创建自己的镜像</li>
+</ol>
+<p>在ubuntu镜像文件中没有通过vim命令。</p>
+<p>所以根据Base镜像构建一个具有vim命令的镜像用于使用。</p>
+<p>1创建一个ubuntu容器作为Base</p>
+<p>2安装vim</p>
+<p>aapt-get update	</p>
+<p>bapt-get -y install vim</p>
+<p>3进行提交</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654929785531-774cc59c-a992-4e89-856e-4cb8b7fad624.png" alt="image.png"></p>
+<p> 五、发布镜像 </p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654930063861-f9fcedc0-71c6-4415-a814-d2e45f98058b.png?x-oss-process=image/resize,w_493,limit_0" alt="image.png"></p>
+<ol>
+<li>发布Docker到阿里云</li>
+</ol>
+<p>阿里云 -&gt; 容器镜像服务</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654930593943-d1a77bef-d58b-4e18-9777-c5634e7cabc0.png" alt="image.png"></p>
+<p>●命名空间（类似于包名）</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654930695229-0694aa8b-b042-4287-ac5e-41e7a10c238c.png" alt="image.png"></p>
+<p>●镜像窗口</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654930678657-21466ea4-cc8a-40c0-8439-ee2e2044e4fb.png" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654930791195-eac18f7d-cb10-4c24-8179-6cc708d28dda.png" alt="image.png"></p>
+<p>生成窗口以后，会提供一系列命令</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654931667228-b39e84fc-d2a8-4736-b202-a927a57d59a8.png" alt="image.png"></p>
+<p>拉取阿里云中的镜像</p>
+<p> 六、容器数据卷 </p>
+<ol>
+<li>添加属性</li>
+</ol>
+<p>添加属性打卡权限</p>
+<p>Docker挂载主机目录访问如果出现cannot open directory .: Permission denied</p>
+<p>解决办法：在挂载目录后多加一个–privileged&#x3D;true参数即可</p>
+<p>为什么？</p>
+<p>●因为目录挂载的情况被默认为不安全的行为，也即使用该参数以后，container内的root拥有真正的root权限，否则，container内的root只是外部的一个普通用户权限。</p>
+<ol start="2">
+<li>是什么？能干什么？</li>
+</ol>
+<p>●容器数据卷可以将容器的数据备份 + 持久化到本地主机目录。</p>
+<p>●卷就是目录或文件，存在于一个或多个容器中，由docker挂载到容器，但不属于联合文件系统，因此能够绕过联合文件系统提供一些用于持续存储或共享数据的特性。</p>
+<p>●卷的设计目的就是数据的持久化，完全独立于容器的生存周期，因此Docker不会在容器删除时删除其挂载的数据卷。</p>
+<p>特点：</p>
+<p>1数据卷可使容器之间共享或重用数据。</p>
+<p>2数据卷中的更改实时生效。</p>
+<p>3数据卷中的更改不会包含在镜像的更新中。</p>
+<p>4数据卷的生命周期一直持续到没有容器使用它为止。</p>
+<p>5当容器停止时，主机进行修改，仍然能够同步。</p>
+<ol start="3">
+<li>使用容器数据卷</li>
+</ol>
+<p> 1）宿主与容器之间添加容器数据卷 </p>
+<p>&#x2F;宿主机绝对路径目录:&#x2F;容器内目录：将宿主机的目录与容器内的目录创建映射关系。</p>
+<p>当目录不存在时，可以自动创建。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654935270538-494cf1c2-3bc8-409c-a245-374a1c14496a.png" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654935307616-f818d9dd-e2f9-46fc-8053-f42758a40f75.png" alt="image.png"></p>
+<p> 2）查看挂载情况 </p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654993488634-744b63bc-ed85-4ed8-9ec9-fa5694699fc1.png" alt="image.png"></p>
+<p> 3）读写规则以及映射添加说明 </p>
+<p>在容器内目录后添加参数</p>
+<ul>
+<li>可读可写</li>
+</ul>
+<p>默认情况下就是可读可写的，rw可以省略。</p>
+<ul>
+<li>只读</li>
+</ul>
+<p>容器只能读取数据，不能写入数据。</p>
+<p> 4）容器卷的继承和共享 </p>
+<p>子容器卷可以继承父容器卷的文件，如果子容器卷进行了修改，那么父容器卷也会发生对应的修改。</p>
+<p>子容器卷和父容器卷是两个不同的容器卷，如果父容器卷被删除了，子容器卷也能正常工作。</p>
+<p> 七、安装常用软件 </p>
+<ol>
+<li>安装步骤</li>
+</ol>
+<p>1搜索镜像</p>
+<p>2拉取镜像</p>
+<p>3查看镜像</p>
+<p>4启动镜像：设置服务端口映射</p>
+<p>5停止容器</p>
+<p>6移除容器</p>
+<ol start="2">
+<li>Tomcat</li>
+</ol>
+<p>1docker search tomcat</p>
+<p>2docker pull tomcat</p>
+<p>3docker images</p>
+<p>4docker run -it -p 8080:8080 tomcat</p>
+<p>5访问首页</p>
+<p>●当出现404错误时，可能是防火墙的问题，也可能是Tomcat最新版的webapps文件夹是空的，如果想要出现Tomcat首页，需要将webapps.dist修改名称为webapps</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1654995534551-f426c5e4-4905-4b95-ba69-8736e6305e86.png" alt="image.png"></p>
+<ol start="3">
+<li>MySql</li>
+</ol>
+<p> 1）简单创建MySQL容器 </p>
+<p>此时存在问题：</p>
+<p>1字符编码问题：默认使用拉丁文字符集SHOW VARIABLES LIKE ‘character%’</p>
+<p>2数据备份问题</p>
+<p> 2）工作中MySQL安装 </p>
+<p>docker run -it -p 3306:3306 –privileged&#x3D;true -v &#x2F;root&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql -v &#x2F;root&#x2F;mysql&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql -v &#x2F;root&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d -e MYSQL_ROOT_PASSWORD&#x3D;123456 –name&#x3D;mysql5.7 mysql:5.7</p>
+<p>注意是 -it<br>当是-d时，由于没有前台进程，容器一创建就结束了。</p>
+<p>–privileged&#x3D;true：开启容器卷的权限</p>
+<p>-v &#x2F;root&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql</p>
+<p>-v &#x2F;root&#x2F;mysql&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql</p>
+<p>-v &#x2F;root&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d 建立容器卷的映射，解决数据备份、字符编码问题。</p>
+<ul>
+<li>创建my.cnf解决中文乱码问题</li>
+</ul>
+<p>1在&#x2F;root&#x2F;mysql&#x2F;conf创建my.cnf文件</p>
+<p>Java</p>
+<p>复制代码</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>[client]</p>
+<p>default_character_set&#x3D;utf8</p>
+<p>[mysqld]</p>
+<p>collation_server &#x3D; utf8_general_ci</p>
+<p>character_set_server &#x3D; utf8</p>
+<p>2重新启动容器卷，查看编码</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/29162123/1655000165345-b391fcec-8fdd-4e46-a9c9-9a750b65e12c.png" alt="image.png"></p>
+<ul>
+<li>数据备份的问题</li>
+</ul>
+<p>当挂载了容器卷以后，即使容器删除了，对应的数据也能进行部分，在下一个mysql创建后仍然可以获取。</p>
+<ol start="4">
+<li>Redis</li>
+</ol>
+<p>同MySQL一样，也有数据备份以及配置的问题。</p>
+<p>mkdir &#x2F;app&#x2F;redis</p>
+<p>拷贝redis.conf到&#x2F;app&#x2F;redis目录下作为我们自己的Redis配置文件。</p>
+<p>修改redis.conf</p>
+<p>1开启密码验证</p>
+<p>●requirepass 123456</p>
+<p>2运行Redis外地连接（必要）</p>
+<p>●注释 bind 127.0.0.1</p>
+<p>3修改后台启动（必要）</p>
+<p>●daemonize no</p>
+<p>该配置会和docker run -d冲突</p>
+<p>4开启数据持久化（必要）</p>
+<p>●appendonly yes</p>
+<p>Java</p>
+<p>复制代码</p>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>docker run  -p 6379:6379 –name 名称 –privileged&#x3D;true</p>
+<p>-v &#x2F;app&#x2F;redis&#x2F;redis.conf:&#x2F;etc&#x2F;redis&#x2F;redis.conf</p>
+<p>-v &#x2F;app&#x2F;redis&#x2F;data:&#x2F;data </p>
+<p>-d redis:6.0.8 </p>
+<p>redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</p>
+<p>redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</p>
+<p>指的是启动redis服务，并且使用这个路径下的redis.conf作为配置文件。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/">https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/09/11/Springsecurity%E5%85%A5%E9%97%A8/" title="Springsecurity入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Springsecurity入门</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">nginx了解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">linux下安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number"></span> <span class="toc-text">Nginx常用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number"></span> <span class="toc-text">演示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-%E5%AD%A6%E4%B9%A0"><span class="toc-number"></span> <span class="toc-text">Docker 学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E9%87%8D%E8%A6%81%E8%A7%A3%E9%87%8A"><span class="toc-number">1.</span> <span class="toc-text">docker重要解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="toc-number"></span> <span class="toc-text">Docker基础篇</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/19/docker%E5%AD%A6%E4%B9%A0/" title="docker学习">docker学习</a><time datetime="2023-09-19T13:24:15.000Z" title="发表于 2023-09-19 21:24:15">2023-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/11/Springsecurity%E5%85%A5%E9%97%A8/" title="Springsecurity入门">Springsecurity入门</a><time datetime="2023-09-11T14:40:54.000Z" title="发表于 2023-09-11 22:40:54">2023-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/10/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%20%E5%B5%A9%E5%B1%B1%E7%89%88/" title="Java 开发手册 嵩山版">Java 开发手册 嵩山版</a><time datetime="2023-09-10T02:03:35.000Z" title="发表于 2023-09-10 10:03:35">2023-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/06/jdk8%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/" title="jdk8新特性学习使用">jdk8新特性学习使用</a><time datetime="2023-09-06T13:03:35.000Z" title="发表于 2023-09-06 21:03:35">2023-09-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/03/mybatis-plus/" title="mybatis_plus">mybatis_plus</a><time datetime="2023-09-03T13:06:27.000Z" title="发表于 2023-09-03 21:06:27">2023-09-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
