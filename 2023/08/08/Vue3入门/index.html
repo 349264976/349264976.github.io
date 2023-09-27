@@ -187,19 +187,23 @@ const addCount = ()=&gt; count.value++
 <li>代码量变少</li>
 <li>分散式维护变成集中式维护</li>
 </ol>
-<h2 id="2-Vue3的优势"><a href="#2-Vue3的优势" class="headerlink" title="2. Vue3的优势"></a>2. Vue3的优势</h2><p><img src="/assets/01.png" alt="image.png"></p>
+<h2 id="2-Vue3的优势"><a href="#2-Vue3的优势" class="headerlink" title="2. Vue3的优势"></a>2. Vue3的优势</h2><img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/01.png" class title="image.png">
+
+
 <h1 id="使用create-vue搭建Vue3项目"><a href="#使用create-vue搭建Vue3项目" class="headerlink" title="使用create-vue搭建Vue3项目"></a>使用create-vue搭建Vue3项目</h1><h2 id="1-认识create-vue"><a href="#1-认识create-vue" class="headerlink" title="1. 认识create-vue"></a>1. 认识create-vue</h2><blockquote>
 <p>create-vue是Vue官方新的脚手架工具，底层切换到了 vite （下一代前端工具链），为开发提供极速响应</p>
 </blockquote>
-<p><img src="/assets/2.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/2.png" class title="image.png">
+
 <h2 id="2-使用create-vue创建项目"><a href="#2-使用create-vue创建项目" class="headerlink" title="2. 使用create-vue创建项目"></a>2. 使用create-vue创建项目</h2><blockquote>
 <p>前置条件 - 已安装16.0或更高版本的Node.js</p>
 </blockquote>
 <p>执行如下命令，这一指令将会安装并执行 create-vue</p>
 <pre><code class="bash">npm init vue@latest
 </code></pre>
-<p><img src="/assets/3.png" alt="image.png"></p>
-<h1 id="熟悉项目和关键文件"><a href="#熟悉项目和关键文件" class="headerlink" title="熟悉项目和关键文件"></a>熟悉项目和关键文件</h1><p><img src="/assets/4.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/3.png" class title="image.png">
+<h1 id="熟悉项目和关键文件"><a href="#熟悉项目和关键文件" class="headerlink" title="熟悉项目和关键文件"></a>熟悉项目和关键文件</h1><img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/4.png" class title="image.png">
+
 <h1 id="组合式API-setup选项"><a href="#组合式API-setup选项" class="headerlink" title="组合式API - setup选项"></a>组合式API - setup选项</h1><h2 id="1-setup选项的写法和执行时机"><a href="#1-setup选项的写法和执行时机" class="headerlink" title="1. setup选项的写法和执行时机"></a>1. setup选项的写法和执行时机</h2><p>写法</p>
 <pre><code class="vue">&lt;script&gt;
   export default &#123;
@@ -216,7 +220,8 @@ const addCount = ()=&gt; count.value++
 <blockquote>
 <p>在beforeCreate钩子之前执行</p>
 </blockquote>
-<p><img src="/assets/5.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/5.png" class title="image.png">
+
 <h2 id="2-setup中写代码的特点"><a href="#2-setup中写代码的特点" class="headerlink" title="2. setup中写代码的特点"></a>2. setup中写代码的特点</h2><blockquote>
 <p>在setup函数中写的数据和方法需要在末尾以对象的方式return，才能给模版使用</p>
 </blockquote>
@@ -388,7 +393,7 @@ const filterList = computed(item=&gt;item &gt; 2)
   &#125;
 &lt;/script&gt;
 </code></pre>
-<h1 id="组合式API-生命周期函数"><a href="#组合式API-生命周期函数" class="headerlink" title="组合式API - 生命周期函数"></a>组合式API - 生命周期函数</h1><h2 id="1-选项式对比组合式"><a href="#1-选项式对比组合式" class="headerlink" title="1. 选项式对比组合式"></a>1. 选项式对比组合式</h2><p><img src="/assets/6.png" alt="image.png"></p>
+<h1 id="组合式API-生命周期函数"><a href="#组合式API-生命周期函数" class="headerlink" title="组合式API - 生命周期函数"></a>组合式API - 生命周期函数</h1><h2 id="1-选项式对比组合式"><a href="#1-选项式对比组合式" class="headerlink" title="1. 选项式对比组合式"></a>1. 选项式对比组合式</h2><img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/6.png" class="" title="image.png">
 <h2 id="2-生命周期函数基本使用"><a href="#2-生命周期函数基本使用" class="headerlink" title="2. 生命周期函数基本使用"></a>2. 生命周期函数基本使用</h2><blockquote>
 <ol>
 <li>导入生命周期函数</li>
@@ -423,7 +428,8 @@ onMounted(()=&gt;&#123;
 <li>子组件内部通过props选项接收数据</li>
 </ol>
 </blockquote>
-<p><img src="/assets/7.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/7.png" class="" title="image.png">
+
 <h2 id="2-子传父"><a href="#2-子传父" class="headerlink" title="2. 子传父"></a>2. 子传父</h2><blockquote>
 <p>基本思想</p>
 <ol>
@@ -431,7 +437,8 @@ onMounted(()=&gt;&#123;
 <li>子组件内部通过 emit 方法触发事件</li>
 </ol>
 </blockquote>
-<p><img src="/assets/8.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/8.png" class="" title="image.png">
+
 <h1 id="组合式API-模版引用"><a href="#组合式API-模版引用" class="headerlink" title="组合式API - 模版引用"></a>组合式API - 模版引用</h1><blockquote>
 <p>概念：通过 ref标识 获取真实的 dom对象或者组件实例对象</p>
 </blockquote>
@@ -442,15 +449,16 @@ onMounted(()=&gt;&#123;
 <li>通过ref标识绑定ref对象到标签</li>
 </ol>
 </blockquote>
-<p><img src="/assets/9.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/9.png" class="" title="image.png">
 <h2 id="2-defineExpose"><a href="#2-defineExpose" class="headerlink" title="2. defineExpose"></a>2. defineExpose</h2><blockquote>
 <p>默认情况下在 <script setup>语法糖下组件内部的属性和方法是不开放给父组件访问的，可以通过defineExpose编译宏指定哪些属性和方法容许访问<br>说明：指定testMessage属性可以被访问到</p>
 </blockquote>
-<p><img src="/assets/10.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/10.png" class="" title="image.png">
 <h1 id="组合式API-provide和inject"><a href="#组合式API-provide和inject" class="headerlink" title="组合式API - provide和inject"></a>组合式API - provide和inject</h1><h2 id="1-作用和场景"><a href="#1-作用和场景" class="headerlink" title="1. 作用和场景"></a>1. 作用和场景</h2><blockquote>
 <p>顶层组件向任意的底层组件传递数据和方法，实现跨层组件通信</p>
 </blockquote>
-<p><img src="/assets/11.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/11.png" class="" title="image.png">
+
 <h2 id="2-跨层传递普通数据"><a href="#2-跨层传递普通数据" class="headerlink" title="2. 跨层传递普通数据"></a>2. 跨层传递普通数据</h2><blockquote>
 <p>实现步骤</p>
 <ol>
@@ -458,15 +466,20 @@ onMounted(()=&gt;&#123;
 <li>底层组件通过 <code>inject</code> 函数提供数据</li>
 </ol>
 </blockquote>
-<p><img src="/assets/12.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/12.png" class="" title="image.png">
+
 <h2 id="3-跨层传递响应式数据"><a href="#3-跨层传递响应式数据" class="headerlink" title="3. 跨层传递响应式数据"></a>3. 跨层传递响应式数据</h2><blockquote>
 <p>在调用provide函数时，第二个参数设置为ref对象</p>
 </blockquote>
-<p><img src="/assets/13.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/13.png" class="" title="image.png">
+
 <h2 id="4-跨层传递方法"><a href="#4-跨层传递方法" class="headerlink" title="4. 跨层传递方法"></a>4. 跨层传递方法</h2><blockquote>
 <p>顶层组件可以向底层组件传递方法，底层组件调用方法修改顶层组件的数据</p>
 </blockquote>
-<p><img src="/assets/14.png" alt="image.png"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/14.png" class="" title="image.png">
+
+
+
 <h1 id="Vue3-3-新特性-defineOptions"><a href="#Vue3-3-新特性-defineOptions" class="headerlink" title="Vue3.3 新特性-defineOptions"></a>Vue3.3 新特性-defineOptions</h1><p>背景说明：</p>
 <p>有 <script setup> 之前，如果要定义 props, emits 可以轻而易举地添加一个与 setup 平级的属性。 </p>
 <p>但是用了 <script setup> 后，就没法这么干了 setup 属性已经没有了，自然无法添加与其平级的属性。</p>
@@ -476,12 +489,21 @@ onMounted(()=&gt;&#123;
 <p>这样就会存在两个 <script> 标签。让人无法接受。</p>
 <hr>
 <p>所以在 Vue 3.3 中新引入了 defineOptions 宏。顾名思义，主要是用来定义 Options API 的选项。可以用 defineOptions 定义任意的选项， props, emits, expose, slots 除外（因为这些可以使用 defineXXX 来做到）</p>
-<p><img src="/assets/image-20230704082955748.png" alt="image-20230704082955748"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/image-20230704082955748.png" class="" title="image-20230704082955748">
+
+
+
+
+
 <h1 id="Vue3-3新特性-defineModel"><a href="#Vue3-3新特性-defineModel" class="headerlink" title="Vue3.3新特性-defineModel"></a>Vue3.3新特性-defineModel</h1><p>在Vue3中，自定义组件上使用v-model, 相当于传递一个modelValue属性，同时触发 update:modelValue 事件</p>
-<p><img src="/assets/image-20230704083027349.png" alt="image-20230704083027349"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/image-20230704083027349.png" class="" title="image-20230704083027349">
+
 <p>我们需要先定义 props，再定义 emits 。其中有许多重复的代码。如果需要修改此值，还需要手动调用 emit 函数。</p>
 <p>于是乎 defineModel 诞生了。</p>
-<p><img src="/assets/image-20230704083056549.png" alt="image-20230704083056549"></p>
+<img src="/2023/08/08/Vue3%E5%85%A5%E9%97%A8/image-20230704083056549.png" class="" title="image-20230704083056549">
+
+
+
 <p>生效需要配置 vite.config.js</p>
 <pre><code class="jsx">import &#123; fileURLToPath, URL &#125; from &#39;node:url&#39;
 
@@ -656,7 +678,7 @@ const filterList &#x3D; computed(item&#x3D;&gt;item &gt; 2)
   &amp;#125;
 &lt;&#x2F;script&gt;
 &lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h1 id&#x3D;&quot;组合式API-生命周期函数&quot;&gt;&lt;a href&#x3D;&quot;#组合式API-生命周期函数&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;组合式API - 生命周期函数&quot;&gt;&lt;&#x2F;a&gt;组合式API - 生命周期函数&lt;&#x2F;h1&gt;&lt;h2 id&#x3D;&quot;1-选项式对比组合式&quot;&gt;&lt;a href&#x3D;&quot;#1-选项式对比组合式&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;1. 选项式对比组合式&quot;&gt;&lt;&#x2F;a&gt;1. 选项式对比组合式&lt;&#x2F;h2&gt;&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;6.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;h1 id&#x3D;&quot;组合式API-生命周期函数&quot;&gt;&lt;a href&#x3D;&quot;#组合式API-生命周期函数&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;组合式API - 生命周期函数&quot;&gt;&lt;&#x2F;a&gt;组合式API - 生命周期函数&lt;&#x2F;h1&gt;&lt;h2 id&#x3D;&quot;1-选项式对比组合式&quot;&gt;&lt;a href&#x3D;&quot;#1-选项式对比组合式&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;1. 选项式对比组合式&quot;&gt;&lt;&#x2F;a&gt;1. 选项式对比组合式&lt;&#x2F;h2&gt;&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;6.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
 &lt;h2 id&#x3D;&quot;2-生命周期函数基本使用&quot;&gt;&lt;a href&#x3D;&quot;#2-生命周期函数基本使用&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;2. 生命周期函数基本使用&quot;&gt;&lt;&#x2F;a&gt;2. 生命周期函数基本使用&lt;&#x2F;h2&gt;&lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;导入生命周期函数&lt;&#x2F;li&gt;
@@ -691,7 +713,8 @@ onMounted(()&#x3D;&gt;&amp;#123;
 &lt;li&gt;子组件内部通过props选项接收数据&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;7.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;7.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
+
 &lt;h2 id&#x3D;&quot;2-子传父&quot;&gt;&lt;a href&#x3D;&quot;#2-子传父&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;2. 子传父&quot;&gt;&lt;&#x2F;a&gt;2. 子传父&lt;&#x2F;h2&gt;&lt;blockquote&gt;
 &lt;p&gt;基本思想&lt;&#x2F;p&gt;
 &lt;ol&gt;
@@ -699,7 +722,8 @@ onMounted(()&#x3D;&gt;&amp;#123;
 &lt;li&gt;子组件内部通过 emit 方法触发事件&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;8.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;8.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
+
 &lt;h1 id&#x3D;&quot;组合式API-模版引用&quot;&gt;&lt;a href&#x3D;&quot;#组合式API-模版引用&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;组合式API - 模版引用&quot;&gt;&lt;&#x2F;a&gt;组合式API - 模版引用&lt;&#x2F;h1&gt;&lt;blockquote&gt;
 &lt;p&gt;概念：通过 ref标识 获取真实的 dom对象或者组件实例对象&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
@@ -710,15 +734,16 @@ onMounted(()&#x3D;&gt;&amp;#123;
 &lt;li&gt;通过ref标识绑定ref对象到标签&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;9.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;9.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
 &lt;h2 id&#x3D;&quot;2-defineExpose&quot;&gt;&lt;a href&#x3D;&quot;#2-defineExpose&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;2. defineExpose&quot;&gt;&lt;&#x2F;a&gt;2. defineExpose&lt;&#x2F;h2&gt;&lt;blockquote&gt;
 &lt;p&gt;默认情况下在 &lt;script setup&gt;语法糖下组件内部的属性和方法是不开放给父组件访问的，可以通过defineExpose编译宏指定哪些属性和方法容许访问&lt;br&gt;说明：指定testMessage属性可以被访问到&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;10.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;10.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
 &lt;h1 id&#x3D;&quot;组合式API-provide和inject&quot;&gt;&lt;a href&#x3D;&quot;#组合式API-provide和inject&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;组合式API - provide和inject&quot;&gt;&lt;&#x2F;a&gt;组合式API - provide和inject&lt;&#x2F;h1&gt;&lt;h2 id&#x3D;&quot;1-作用和场景&quot;&gt;&lt;a href&#x3D;&quot;#1-作用和场景&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;1. 作用和场景&quot;&gt;&lt;&#x2F;a&gt;1. 作用和场景&lt;&#x2F;h2&gt;&lt;blockquote&gt;
 &lt;p&gt;顶层组件向任意的底层组件传递数据和方法，实现跨层组件通信&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;11.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;11.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
+
 &lt;h2 id&#x3D;&quot;2-跨层传递普通数据&quot;&gt;&lt;a href&#x3D;&quot;#2-跨层传递普通数据&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;2. 跨层传递普通数据&quot;&gt;&lt;&#x2F;a&gt;2. 跨层传递普通数据&lt;&#x2F;h2&gt;&lt;blockquote&gt;
 &lt;p&gt;实现步骤&lt;&#x2F;p&gt;
 &lt;ol&gt;
@@ -726,15 +751,20 @@ onMounted(()&#x3D;&gt;&amp;#123;
 &lt;li&gt;底层组件通过 &lt;code&gt;inject&lt;&#x2F;code&gt; 函数提供数据&lt;&#x2F;li&gt;
 &lt;&#x2F;ol&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;12.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;12.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
+
 &lt;h2 id&#x3D;&quot;3-跨层传递响应式数据&quot;&gt;&lt;a href&#x3D;&quot;#3-跨层传递响应式数据&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;3. 跨层传递响应式数据&quot;&gt;&lt;&#x2F;a&gt;3. 跨层传递响应式数据&lt;&#x2F;h2&gt;&lt;blockquote&gt;
 &lt;p&gt;在调用provide函数时，第二个参数设置为ref对象&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;13.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;13.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
+
 &lt;h2 id&#x3D;&quot;4-跨层传递方法&quot;&gt;&lt;a href&#x3D;&quot;#4-跨层传递方法&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;4. 跨层传递方法&quot;&gt;&lt;&#x2F;a&gt;4. 跨层传递方法&lt;&#x2F;h2&gt;&lt;blockquote&gt;
 &lt;p&gt;顶层组件可以向底层组件传递方法，底层组件调用方法修改顶层组件的数据&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;14.png&quot; alt&#x3D;&quot;image.png&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;14.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image.png&quot;&gt;
+
+
+
 &lt;h1 id&#x3D;&quot;Vue3-3-新特性-defineOptions&quot;&gt;&lt;a href&#x3D;&quot;#Vue3-3-新特性-defineOptions&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;Vue3.3 新特性-defineOptions&quot;&gt;&lt;&#x2F;a&gt;Vue3.3 新特性-defineOptions&lt;&#x2F;h1&gt;&lt;p&gt;背景说明：&lt;&#x2F;p&gt;
 &lt;p&gt;有 &lt;script setup&gt; 之前，如果要定义 props, emits 可以轻而易举地添加一个与 setup 平级的属性。 &lt;&#x2F;p&gt;
 &lt;p&gt;但是用了 &lt;script setup&gt; 后，就没法这么干了 setup 属性已经没有了，自然无法添加与其平级的属性。&lt;&#x2F;p&gt;
@@ -744,12 +774,21 @@ onMounted(()&#x3D;&gt;&amp;#123;
 &lt;p&gt;这样就会存在两个 &lt;script&gt; 标签。让人无法接受。&lt;&#x2F;p&gt;
 &lt;hr&gt;
 &lt;p&gt;所以在 Vue 3.3 中新引入了 defineOptions 宏。顾名思义，主要是用来定义 Options API 的选项。可以用 defineOptions 定义任意的选项， props, emits, expose, slots 除外（因为这些可以使用 defineXXX 来做到）&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;image-20230704082955748.png&quot; alt&#x3D;&quot;image-20230704082955748&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;image-20230704082955748.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image-20230704082955748&quot;&gt;
+
+
+
+
+
 &lt;h1 id&#x3D;&quot;Vue3-3新特性-defineModel&quot;&gt;&lt;a href&#x3D;&quot;#Vue3-3新特性-defineModel&quot; class&#x3D;&quot;headerlink&quot; title&#x3D;&quot;Vue3.3新特性-defineModel&quot;&gt;&lt;&#x2F;a&gt;Vue3.3新特性-defineModel&lt;&#x2F;h1&gt;&lt;p&gt;在Vue3中，自定义组件上使用v-model, 相当于传递一个modelValue属性，同时触发 update:modelValue 事件&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;image-20230704083027349.png&quot; alt&#x3D;&quot;image-20230704083027349&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;image-20230704083027349.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image-20230704083027349&quot;&gt;
+
 &lt;p&gt;我们需要先定义 props，再定义 emits 。其中有许多重复的代码。如果需要修改此值，还需要手动调用 emit 函数。&lt;&#x2F;p&gt;
 &lt;p&gt;于是乎 defineModel 诞生了。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;img src&#x3D;&quot;&#x2F;assets&#x2F;image-20230704083056549.png&quot; alt&#x3D;&quot;image-20230704083056549&quot;&gt;&lt;&#x2F;p&gt;
+&lt;img src&#x3D;&quot;&#x2F;2023&#x2F;08&#x2F;08&#x2F;Vue3%E5%85%A5%E9%97%A8&#x2F;image-20230704083056549.png&quot; class&#x3D;&quot;&quot; title&#x3D;&quot;image-20230704083056549&quot;&gt;
+
+
+
 &lt;p&gt;生效需要配置 vite.config.js&lt;&#x2F;p&gt;
 &lt;pre&gt;&lt;code class&#x3D;&quot;jsx&quot;&gt;import &amp;#123; fileURLToPath, URL &amp;#125; from &#39;node:url&#39;
 

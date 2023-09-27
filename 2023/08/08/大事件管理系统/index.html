@@ -165,11 +165,22 @@
 <p>接口文档:   <a target="_blank" rel="noopener" href="https://apifox.com/apidoc/shared-26c67aee-0233-4d23-aab7-08448fdf95ff/api-93850835">https://apifox.com/apidoc/shared-26c67aee-0233-4d23-aab7-08448fdf95ff/api-93850835</a></p>
 <p><strong>接口根路径：</strong>  <a target="_blank" rel="noopener" href="http://big-event-vue-api-t.itheima.net/">http://big-event-vue-api-t.itheima.net</a></p>
 <p>本项目的技术栈 本项目技术栈基于 <a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/">ES6</a>、<a target="_blank" rel="noopener" href="https://cn.vuejs.org/index.html">vue3</a>、<a target="_blank" rel="noopener" href="https://pinia.web3doc.top/">pinia</a>、<a target="_blank" rel="noopener" href="https://router.vuejs.org/">vue-router</a> 、vite 、axios 和 <a target="_blank" rel="noopener" href="https://element-plus.org/">element-plus</a></p>
-<p><img src="/assets/image-20230711003405635.png" alt="image-20230711003405635"></p>
-<h2 id="项目页面介绍"><a href="#项目页面介绍" class="headerlink" title="项目页面介绍"></a>项目页面介绍</h2><p><img src="/assets/image-20230706205300370.png" alt="image-20230706205300370"></p>
-<p><img src="/assets/image-20230706210947086.png" alt="image-20230706210947086"></p>
-<p><img src="/assets/image-20230706211055251.png" alt="image-20230706211055251"></p>
-<p><img src="/assets/image-20230706211033589.png" alt="image-20230706211033589"></p>
+
+
+
+
+
+
+<h2 id="项目页面介绍"><a href="#项目页面介绍" class="headerlink" title="项目页面介绍"></a>项目页面介绍</h2>
+
+
+
+
+
+
+
+
+
 <h2 id="pnpm-包管理器-创建项目"><a href="#pnpm-包管理器-创建项目" class="headerlink" title="pnpm 包管理器 - 创建项目"></a>pnpm 包管理器 - 创建项目</h2><p>一些优势：比同类工具快 2倍 左右、节省磁盘空间… <a target="_blank" rel="noopener" href="https://www.pnpm.cn/">https://www.pnpm.cn/</a></p>
 <p>安装方式：</p>
 <pre><code>npm install -g pnpm
@@ -177,7 +188,12 @@
 <p>创建项目：</p>
 <pre><code>pnpm create vue
 </code></pre>
-<p><img src="/assets/image-20230710172832242.png" alt="image-20230710172832242"></p>
+
+
+
+
+
+
 <h2 id="ESLint-amp-prettier-配置代码风格"><a href="#ESLint-amp-prettier-配置代码风格" class="headerlink" title="ESLint &amp; prettier 配置代码风格"></a>ESLint &amp; prettier 配置代码风格</h2><p><strong>环境同步：</strong></p>
 <ol>
 <li><strong>安装了插件 ESlint，开启保存自动修复</strong></li>
@@ -328,7 +344,8 @@ app.mount(&#39;#app&#39;)
 <ol start="3">
 <li>新增需要目录 api  utils</li>
 </ol>
-<p><img src="/assets/image-20230710215822678.png" alt="image-20230710215822678"></p>
+
+
 <ol start="4">
 <li>将项目需要的全局样式 和 图片文件，复制到 assets 文件夹中,  并将全局样式在main.js中引入</li>
 </ol>
@@ -407,7 +424,8 @@ export default defineConfig(&#123;
   &lt;/div&gt;
 &lt;/template&gt;
 </code></pre>
-<p><img src="/assets/image-20230710225018162.png" alt="image-20230710225018162"></p>
+
+
 <p><strong>彩蛋：</strong>默认 components 下的文件也会被自动注册~</p>
 <h2 id="Pinia-构建用户仓库-和-持久化"><a href="#Pinia-构建用户仓库-和-持久化" class="headerlink" title="Pinia - 构建用户仓库 和 持久化"></a>Pinia - 构建用户仓库 和 持久化</h2><p>官方文档：<a target="_blank" rel="noopener" href="https://prazdevs.github.io/pinia-plugin-persistedstate/zh/">https://prazdevs.github.io/pinia-plugin-persistedstate/zh/</a></p>
 <ol>
@@ -448,7 +466,8 @@ export const useUserStore = defineStore(
 <p>仓库 统一导出</p>
 <p>- 现在：使用一个仓库 import { useUserStore } from <code>./stores/user.js</code> 不同仓库路径不一致</p>
 <p>- 优化：由 stores&#x2F;index.js 统一导出，导入路径统一 <code>./stores</code>，而且仓库维护在 stores&#x2F;modules 中</p>
-<h2 id="数据交互-请求工具设计"><a href="#数据交互-请求工具设计" class="headerlink" title="数据交互 - 请求工具设计"></a>数据交互 - 请求工具设计</h2><p><img src="/assets/image-20230711071913061.png" alt="image-20230711071913061"></p>
+<h2 id="数据交互-请求工具设计"><a href="#数据交互-请求工具设计" class="headerlink" title="数据交互 - 请求工具设计"></a>数据交互 - 请求工具设计</h2>
+
 <h3 id="1-创建-axios-实例"><a href="#1-创建-axios-实例" class="headerlink" title="1. 创建 axios 实例"></a>1. 创建 axios 实例</h3><p>们会使用 axios 来请求后端接口, 一般都会对 axios 进行一些配置 (比如: 配置基础地址等)</p>
 <p>一般项目开发中, 都会对 axios 进行基本的二次封装, 单独封装到一个模块中, 便于使用</p>
 <ol>
@@ -1570,7 +1589,8 @@ export const artDelChannelService = (id) =&gt;
   getChannelList()
 &#125;
 </code></pre>
-<h1 id="文章管理页面-element-plus-强化"><a href="#文章管理页面-element-plus-强化" class="headerlink" title="文章管理页面 - [element-plus 强化]"></a>文章管理页面 - [element-plus 强化]</h1><h2 id="文章列表渲染"><a href="#文章列表渲染" class="headerlink" title="文章列表渲染"></a>文章列表渲染</h2><h3 id="基本架子搭建"><a href="#基本架子搭建" class="headerlink" title="基本架子搭建"></a>基本架子搭建</h3><p><img src="/assets/image-20230724224754131.png" alt="image-20230724224754131"></p>
+<h1 id="文章管理页面-element-plus-强化"><a href="#文章管理页面-element-plus-强化" class="headerlink" title="文章管理页面 - [element-plus 强化]"></a>文章管理页面 - [element-plus 强化]</h1><h2 id="文章列表渲染"><a href="#文章列表渲染" class="headerlink" title="文章列表渲染"></a>文章列表渲染</h2><h3 id="基本架子搭建"><a href="#基本架子搭建" class="headerlink" title="基本架子搭建"></a>基本架子搭建</h3>
+
 <ol>
 <li>搜索表单</li>
 </ol>

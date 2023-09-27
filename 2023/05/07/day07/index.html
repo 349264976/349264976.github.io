@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>fuguangmengying | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、Vuex 概述目标：明确Vuex是什么，应用场景以及优势 1.是什么Vuex 是一个 Vue 的 状态管理工具，状态就是数据。 大白话：Vuex 是一个插件，可以帮我们管理 Vue 通用的数据 (多组件共享的数据)。例如：购物车数据   个人信息数 2.使用场景 某个状态 在 很多个组件 来使用 (个人信息)  多个组件 共同维护 一份数据 (购物车)    3.优势 共同维护一份数据，数据集">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>fuguangmengying | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、Vuex 概述目标：明确Vuex是什么，应用场景以及优势 1.是什么Vuex 是一个 Vue 的 状态管理工具，状态就是数据。 大白话：Vuex 是一个插件，可以帮我们管理 Vue 通用的数据 (多组件共享的数据)。例如：购物车数据   个人信息数 2.使用场景 某个状态 在 很多个组件 来使用 (个人信息)  多个组件 共同维护 一份数据 (购物车)     3.优势 共同维护一份数据，数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="fuguangmengying">
 <meta property="og:url" content="https://349264976.github.io/2023/05/07/day07/index.html">
 <meta property="og:site_name" content="fuguangmengying">
-<meta property="og:description" content="一、Vuex 概述目标：明确Vuex是什么，应用场景以及优势 1.是什么Vuex 是一个 Vue 的 状态管理工具，状态就是数据。 大白话：Vuex 是一个插件，可以帮我们管理 Vue 通用的数据 (多组件共享的数据)。例如：购物车数据   个人信息数 2.使用场景 某个状态 在 很多个组件 来使用 (个人信息)  多个组件 共同维护 一份数据 (购物车)    3.优势 共同维护一份数据，数据集">
+<meta property="og:description" content="一、Vuex 概述目标：明确Vuex是什么，应用场景以及优势 1.是什么Vuex 是一个 Vue 的 状态管理工具，状态就是数据。 大白话：Vuex 是一个插件，可以帮我们管理 Vue 通用的数据 (多组件共享的数据)。例如：购物车数据   个人信息数 2.使用场景 某个状态 在 很多个组件 来使用 (个人信息)  多个组件 共同维护 一份数据 (购物车)     3.优势 共同维护一份数据，数据">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://349264976.github.io/img/avatar.jpg">
 <meta property="article:published_time" content="2023-05-07T07:14:20.000Z">
@@ -170,13 +170,15 @@
 <li><p>多个组件 共同维护 一份数据 (购物车)</p>
 </li>
 </ul>
-<p><img src="/assets/1683178186642.png" alt="68317818664"></p>
+
+
 <h3 id="3-优势"><a href="#3-优势" class="headerlink" title="3.优势"></a>3.优势</h3><ul>
 <li>共同维护一份数据，<strong>数据集中化管理</strong></li>
 <li><strong>响应式变化</strong></li>
 <li>操作简洁 (vuex提供了一些辅助函数)</li>
 </ul>
-<p><img src="/assets/1683178293366.png" alt="68317829336"></p>
+
+
 <h3 id="4-注意："><a href="#4-注意：" class="headerlink" title="4.注意："></a>4.注意：</h3><p>官方原文：</p>
 <ul>
 <li>不是所有的场景都适用于vuex，只有在必要的时候才使用vuex</li>
@@ -184,7 +186,8 @@
 </ul>
 <p>Vuex就像《近视眼镜》, 你自然会知道什么时候需要用它~</p>
 <h2 id="二、需求-多组件共享数据"><a href="#二、需求-多组件共享数据" class="headerlink" title="二、需求: 多组件共享数据"></a>二、需求: 多组件共享数据</h2><p>目标：基于脚手架创建项目，构建 vuex 多组件数据共享环境</p>
-<p><img src="/assets/1683178912695.png" alt="68317891269"></p>
+
+
 <p>效果是三个组件共享一份数据:</p>
 <ul>
 <li>任意一个组件都可以修改数据</li>
@@ -302,12 +305,13 @@ h2 &#123;
 &#125;
 &lt;/style&gt;
 </code></pre>
-<h2 id="三、vuex-的使用-创建仓库"><a href="#三、vuex-的使用-创建仓库" class="headerlink" title="三、vuex 的使用 - 创建仓库"></a>三、vuex 的使用 - 创建仓库</h2><p><img src="/assets/1683212784179.png" alt="68321278417"></p>
+<h2 id="三、vuex-的使用-创建仓库"><a href="#三、vuex-的使用-创建仓库" class="headerlink" title="三、vuex 的使用 - 创建仓库"></a>三、vuex 的使用 - 创建仓库</h2>
+
 <h3 id="1-安装-vuex"><a href="#1-安装-vuex" class="headerlink" title="1.安装 vuex"></a>1.安装 vuex</h3><p>安装vuex与vue-router类似，vuex是一个独立存在的插件，如果脚手架初始化没有选 vuex，就需要额外安装。</p>
 <pre><code class="bash">yarn add vuex@3 或者 npm i vuex@3
 </code></pre>
 <h3 id="2-新建-store-index-js-专门存放-vuex"><a href="#2-新建-store-index-js-专门存放-vuex" class="headerlink" title="2.新建 store/index.js 专门存放 vuex"></a>2.新建 <code>store/index.js</code> 专门存放 vuex</h3><p>​	为了维护项目目录的整洁，在src目录下新建一个store目录其下放置一个index.js文件。 (和 <code>router/index.js</code> 类似)</p>
-<p>​	<img src="/assets/1683212805824.png" alt="68321280582"></p>
+<p>​	</p>
 <h3 id="3-创建仓库-store-index-js"><a href="#3-创建仓库-store-index-js" class="headerlink" title="3.创建仓库 store/index.js"></a>3.创建仓库 <code>store/index.js</code></h3><pre><code class="jsx">// 导入 vue
 import Vue from &#39;vue&#39;
 // 导入 vuex
@@ -390,7 +394,8 @@ console.log(store.state.count)
 <p>mapState是辅助函数，帮助我们把store中的数据映射到 组件的计算属性中, 它属于一种方便的用法</p>
 </blockquote>
 <p>用法 ：</p>
-<p><img src="/assets/1683214719574.png" alt="68321471957"> </p>
+ 
+
 <h3 id="1-第一步：导入mapState-mapState是vuex中的一个函数"><a href="#1-第一步：导入mapState-mapState是vuex中的一个函数" class="headerlink" title="1.第一步：导入mapState (mapState是vuex中的一个函数)"></a>1.第一步：导入mapState (mapState是vuex中的一个函数)</h3><pre><code class="js">import &#123; mapState &#125; from &#39;vuex&#39;
 </code></pre>
 <h3 id="2-第二步：采用数组形式引入state属性"><a href="#2-第二步：采用数组形式引入state属性" class="headerlink" title="2.第二步：采用数组形式引入state属性"></a>2.第二步：采用数组形式引入state属性</h3><pre><code class="js">mapState([&#39;count&#39;]) 
@@ -409,7 +414,8 @@ console.log(store.state.count)
 <pre><code class="vue"> &lt;div&gt; state的数据：&#123;&#123; count &#125;&#125;&lt;/div&gt;
 </code></pre>
 <h2 id="六、开启严格模式及Vuex的单项数据流"><a href="#六、开启严格模式及Vuex的单项数据流" class="headerlink" title="六、开启严格模式及Vuex的单项数据流"></a>六、开启严格模式及Vuex的单项数据流</h2><h3 id="1-目标-1"><a href="#1-目标-1" class="headerlink" title="1.目标"></a>1.目标</h3><p>明确 vuex 同样遵循单向数据流，组件中不能直接修改仓库的数据</p>
-<h3 id="2-直接在组件中修改Vuex中state的值"><a href="#2-直接在组件中修改Vuex中state的值" class="headerlink" title="2.直接在组件中修改Vuex中state的值"></a>2.直接在组件中修改Vuex中state的值</h3><p><img src="/assets/1683215892288.png" alt="68321589228"></p>
+<h3 id="2-直接在组件中修改Vuex中state的值"><a href="#2-直接在组件中修改Vuex中state的值" class="headerlink" title="2.直接在组件中修改Vuex中state的值"></a>2.直接在组件中修改Vuex中state的值</h3>
+
 <p>Son1.vue</p>
 <pre><code class="vue">button @click=&quot;handleAdd&quot;&gt;值 + 1&lt;/button&gt;
 
@@ -426,7 +432,8 @@ methods:&#123;
 <blockquote>
 <p><strong>state数据的修改只能通过mutations，并且mutations必须是同步的</strong></p>
 </blockquote>
-<p><img src="/assets/1683215821033.png" alt="68321471957"></p>
+
+
 <h2 id="七、核心概念-mutations"><a href="#七、核心概念-mutations" class="headerlink" title="七、核心概念-mutations"></a>七、核心概念-mutations</h2><h3 id="1-定义mutations"><a href="#1-定义mutations" class="headerlink" title="1.定义mutations"></a>1.定义mutations</h3><pre><code class="js">const store  = new Vuex.Store(&#123;
   state: &#123;
     count: 0
@@ -456,7 +463,8 @@ methods:&#123;
 <p>2.组件中提交调用 mutations(通过$store.commit(‘mutations的方法名’))</p>
 <h2 id="八、带参数的-mutations"><a href="#八、带参数的-mutations" class="headerlink" title="八、带参数的 mutations"></a>八、带参数的 mutations</h2><h3 id="1-目标："><a href="#1-目标：" class="headerlink" title="1.目标："></a>1.目标：</h3><p>掌握 mutations 传参语法</p>
 <h3 id="2-语法"><a href="#2-语法" class="headerlink" title="2.语法"></a>2.语法</h3><p>看下面这个案例，每次点击不同的按钮，加的值都不同，每次都要定义不同的mutations处理吗？</p>
-<p><img src="/assets/1683217004239.png" alt="68321700423"></p>
+
+
 <p>提交 mutation 是可以传递参数的  <code>this.$store.commit(&#39;xxx&#39;,  参数)</code></p>
 <h4 id="2-1-提供mutation函数（带参数）"><a href="#2-1-提供mutation函数（带参数）" class="headerlink" title="2.1 提供mutation函数（带参数）"></a>2.1 提供mutation函数（带参数）</h4><pre><code class="js">mutations: &#123;
   ...
@@ -474,8 +482,10 @@ methods:&#123;
   count: 10
 &#125;)
 </code></pre>
-<h2 id="九、练习-mutations的减法功能"><a href="#九、练习-mutations的减法功能" class="headerlink" title="九、练习-mutations的减法功能"></a>九、练习-mutations的减法功能</h2><p><img src="/assets/1683217248752.png" alt="68321724875"></p>
-<h3 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1.步骤"></a>1.步骤</h3><p><img src="/assets/1683217268256.png" alt="68321726825"></p>
+<h2 id="九、练习-mutations的减法功能"><a href="#九、练习-mutations的减法功能" class="headerlink" title="九、练习-mutations的减法功能"></a>九、练习-mutations的减法功能</h2>
+
+<h3 id="1-步骤"><a href="#1-步骤" class="headerlink" title="1.步骤"></a>1.步骤</h3>
+
 <h3 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2.代码实现"></a>2.代码实现</h3><p>Son2.vue</p>
 <pre><code class="vue">    &lt;button @click=&quot;subCount(1)&quot;&gt;值 - 1&lt;/button&gt;
     &lt;button @click=&quot;subCount(5)&quot;&gt;值 - 5&lt;/button&gt;
@@ -497,8 +507,10 @@ methods:&#123;
 &#125;
 </code></pre>
 <h2 id="十、练习-Vuex中的值和组件中的input双向绑定"><a href="#十、练习-Vuex中的值和组件中的input双向绑定" class="headerlink" title="十、练习-Vuex中的值和组件中的input双向绑定"></a>十、练习-Vuex中的值和组件中的input双向绑定</h2><h3 id="1-目标-2"><a href="#1-目标-2" class="headerlink" title="1.目标"></a>1.目标</h3><p>实时输入，实时更新，巩固 mutations 传参语法</p>
-<p><img src="/assets/1683217697064.png" alt="68321769706"></p>
-<h3 id="2-实现步骤"><a href="#2-实现步骤" class="headerlink" title="2.实现步骤"></a>2.实现步骤</h3><p><img src="/assets/1683217717788.png" alt="68321771778"></p>
+
+
+<h3 id="2-实现步骤"><a href="#2-实现步骤" class="headerlink" title="2.实现步骤"></a>2.实现步骤</h3>
+
 <h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><p>App.vue</p>
 <pre><code class="vue">&lt;input :value=&quot;count&quot; @input=&quot;handleInput&quot; type=&quot;text&quot;&gt;
 
@@ -548,7 +560,8 @@ methods: &#123;
 </blockquote>
 <p><strong>说明：mutations必须是同步的</strong></p>
 <p><strong>需求: 一秒钟之后, 要给一个数 去修改state</strong></p>
-<p><img src="/assets/1683218603674.png" alt="68321860367"></p>
+
+
 <h3 id="1-定义actions"><a href="#1-定义actions" class="headerlink" title="1.定义actions"></a><strong>1.定义actions</strong></h3><pre><code class="js">mutations: &#123;
   changeCount (state, newCount) &#123;
     state.count = newCount
@@ -569,7 +582,8 @@ actions: &#123;
   this.$store.dispatch(&#39;setAsyncCount&#39;, 666)
 &#125;
 </code></pre>
-<p><img src="/assets/1683441987572.png" alt="68344198757"></p>
+
+
 <h2 id="十三、辅助函数-mapActions"><a href="#十三、辅助函数-mapActions" class="headerlink" title="十三、辅助函数 -mapActions"></a>十三、辅助函数 -mapActions</h2><p>1.目标：掌握辅助函数 mapActions，映射方法</p>
 <blockquote>
 <p>mapActions 是把位于 actions中的方法提取了出来，映射到组件methods中</p>
@@ -613,12 +627,16 @@ methods: &#123;
 </code></pre>
 <pre><code class="vue"> &lt;div&gt;&#123;&#123; filterList &#125;&#125;&lt;/div&gt;
 </code></pre>
-<h2 id="十五、使用小结"><a href="#十五、使用小结" class="headerlink" title="十五、使用小结"></a>十五、使用小结</h2><p><img src="/assets/1683442133911.png" alt="68344213391"></p>
+<h2 id="十五、使用小结"><a href="#十五、使用小结" class="headerlink" title="十五、使用小结"></a>十五、使用小结</h2>
+
 <h2 id="十六、核心概念-module"><a href="#十六、核心概念-module" class="headerlink" title="十六、核心概念 - module"></a>十六、核心概念 - module</h2><h3 id="1-目标-3"><a href="#1-目标-3" class="headerlink" title="1.目标"></a>1.目标</h3><p>掌握核心概念 module 模块的创建</p>
 <h3 id="2-问题"><a href="#2-问题" class="headerlink" title="2.问题"></a>2.问题</h3><p>由于使用<strong>单一状态树</strong>，应用的所有状态<strong>会集中到一个比较大的对象</strong>。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。</p>
 <p>这句话的意思是，如果把所有的状态都放在state中，当项目变得越来越大的时候，Vuex会变得越来越难以维护</p>
 <p>由此，又有了Vuex的模块化</p>
-<p><img src="/assets/1683425758358.png" alt="68342575835"></p>
+
+
+
+
 <h3 id="3-模块定义-准备-state"><a href="#3-模块定义-准备-state" class="headerlink" title="3.模块定义 - 准备 state"></a><strong>3.模块定义</strong> - 准备 state</h3><p>定义两个模块   <strong>user</strong> 和  <strong>setting</strong></p>
 <p>user中管理用户的信息状态  userInfo  <code>modules/user.js</code></p>
 <pre><code class="jsx">const state = &#123;
@@ -675,7 +693,8 @@ const store = new Vuex.Store(&#123;
 <p>也可以通过 mapState 映射</p>
 <h2 id="十七、获取模块内的state数据"><a href="#十七、获取模块内的state数据" class="headerlink" title="十七、获取模块内的state数据"></a>十七、获取模块内的state数据</h2><h3 id="1-目标：-1"><a href="#1-目标：-1" class="headerlink" title="1.目标："></a>1.目标：</h3><p>掌握模块中 state 的访问语法</p>
 <p>尽管已经分模块了，但其实子模块的状态，还是会挂到根级别的 state 中，属性名就是模块名</p>
-<p><img src="/assets/1683427841660.png" alt="68342784166"></p>
+
+
 <h3 id="2-使用模块中的数据"><a href="#2-使用模块中的数据" class="headerlink" title="2.使用模块中的数据"></a>2.使用模块中的数据</h3><ol>
 <li>直接通过模块名访问 $store.state.模块名.xxx</li>
 <li>通过 mapState 映射：</li>
@@ -808,7 +827,10 @@ methods:&#123;
 </li>
 </ol>
 <h3 id="4-代码实现-1"><a href="#4-代码实现-1" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p>需求：</p>
-<p><img src="/assets/1683431615694.png" alt="68343161569"></p>
+
+
+
+
 <p><code>modules/user.js</code></p>
 <pre><code class="js">const actions = &#123;
   setUserSecond (context, newUserInfo) &#123;
@@ -866,7 +888,8 @@ methods:&#123;
 <ol start="2">
 <li>将原本src内容清空，替换成教学资料的《vuex-cart-准备代码》</li>
 </ol>
-<p><img src="/assets/1683432959356.png" alt="68343295935"></p>
+
+
 <p>需求：</p>
 <ol>
 <li>发请求动态渲染购物车，数据存vuex （存cart模块， 将来还会有user模块，article模块…）</li>
@@ -916,7 +939,8 @@ export default store
 <pre><code>json-server  --watch  index.json
 </code></pre>
 <h2 id="二十五、综合案例-请求动态渲染数据"><a href="#二十五、综合案例-请求动态渲染数据" class="headerlink" title="二十五、综合案例-请求动态渲染数据"></a>二十五、综合案例-请求动态渲染数据</h2><h3 id="1-目标-4"><a href="#1-目标-4" class="headerlink" title="1.目标"></a>1.目标</h3><p>请求获取数据存入 vuex, 映射渲染</p>
-<p><img src="/assets/1683436471929.png" alt="68343647192"></p>
+
+
 <ol>
 <li>安装 axios</li>
 </ol>
@@ -1010,7 +1034,8 @@ export default &#123;
 &#125;
 &lt;/script&gt;
 </code></pre>
-<h2 id="二十六、综合案例-修改数量"><a href="#二十六、综合案例-修改数量" class="headerlink" title="二十六、综合案例-修改数量"></a>二十六、综合案例-修改数量</h2><p><img src="/assets/1683437346997.png" alt="68343734699"></p>
+<h2 id="二十六、综合案例-修改数量"><a href="#二十六、综合案例-修改数量" class="headerlink" title="二十六、综合案例-修改数量"></a>二十六、综合案例-修改数量</h2>
+
 <ol>
 <li>注册点击事件</li>
 </ol>
