@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>docker学习 | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="nginx了解2、启动nginx 有很多种方法启动nginx (1)直接双击nginx.exe，双击后一个黑色的弹窗一闪而过 (2)打开cmd命令窗口，切换到nginx解压目录下，输入命令 nginx.exe ，回车即可 3、检查nginx是否启动成功 直接在浏览器地址栏输入网址 http:&#x2F;&#x2F;localhost:80 回车，出现以下页面说明启动成功！  4、配置监听 nginx的配置文件是con">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>docker学习 | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="nginx了解nginx的最重要学习 配置文件 配置  worker_processes  1;  events &amp;#123;     worker_connections  1024; &amp;#125;  http &amp;#123;     include       mime.types;     default_type  application&#x2F;json; sendfile        on;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker学习">
 <meta property="og:url" content="https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="fuguangmengying">
-<meta property="og:description" content="nginx了解2、启动nginx 有很多种方法启动nginx (1)直接双击nginx.exe，双击后一个黑色的弹窗一闪而过 (2)打开cmd命令窗口，切换到nginx解压目录下，输入命令 nginx.exe ，回车即可 3、检查nginx是否启动成功 直接在浏览器地址栏输入网址 http:&#x2F;&#x2F;localhost:80 回车，出现以下页面说明启动成功！  4、配置监听 nginx的配置文件是con">
+<meta property="og:description" content="nginx了解nginx的最重要学习 配置文件 配置  worker_processes  1;  events &amp;#123;     worker_connections  1024; &amp;#125;  http &amp;#123;     include       mime.types;     default_type  application&#x2F;json; sendfile        on;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://349264976.github.io/img/avatar.jpg">
 <meta property="article:published_time" content="2023-09-19T13:24:15.000Z">
-<meta property="article:modified_time" content="2023-09-27T12:15:44.327Z">
+<meta property="article:modified_time" content="2023-10-15T15:54:33.948Z">
 <meta property="article:author" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://349264976.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
@@ -57,7 +57,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2023-09-27 20:15:44'
+  postUpdate: '2023-10-15 23:54:33'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -161,7 +161,110 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">docker学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-19T13:24:15.000Z" title="发表于 2023-09-19 21:24:15">2023-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-27T12:15:44.327Z" title="更新于 2023-09-27 20:15:44">2023-09-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="docker学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="nginx了解"><a href="#nginx了解" class="headerlink" title="nginx了解"></a>nginx了解</h3><p><strong>2、启动nginx</strong></p>
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">docker学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-19T13:24:15.000Z" title="发表于 2023-09-19 21:24:15">2023-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-15T15:54:33.948Z" title="更新于 2023-10-15 23:54:33">2023-10-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="docker学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="nginx了解"><a href="#nginx了解" class="headerlink" title="nginx了解"></a>nginx了解</h3><p>nginx的最重要学习 配置文件 配置 </p>
+<pre><code>worker_processes  1;
+
+events &#123;
+    worker_connections  1024;
+&#125;
+
+http &#123;
+    include       mime.types;
+    default_type  application/json;
+sendfile        on;
+
+keepalive_timeout  65;
+
+ server &#123;
+    listen       80;
+    server_name  localhost;
+    # 指定前端项目所在的位置
+    location / &#123;
+        root html;
+    &#125;
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html &#123;
+        root   html;
+    &#125;
+&#125;
+server &#123;
+    listen       18080;
+    server_name  localhost;
+    # 指定前端项目所在的位置
+    location / &#123;
+        root html/hmall-portal;
+    &#125;
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html &#123;
+        root   html;
+    &#125;
+    location /api &#123;
+        rewrite /api/(.*)  /$1 break;
+        proxy_pass http://localhost:10010;
+    &#125;
+&#125;
+server &#123;
+    listen       18081;
+    server_name  localhost;
+    # 指定前端项目所在的位置
+    location / &#123;
+        root html/hmall-admin;
+    &#125;
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html &#123;
+        root   html;
+    &#125;
+    location /api &#123;
+        rewrite /api/(.*)  /$1 break;
+        proxy_pass http://localhost:10010;
+    &#125;
+&#125;
+# upstream backend &#123;
+#     server 127.0.0.1:8081 max_fails=5 fail_timeout=10s weight=1;
+#     server 127.0.0.1:8082 max_fails=5 fail_timeout=10s weight=1;
+# &#125;  
+&#125;
+</code></pre>
+<ol>
+<li><strong>worker_processes 1;&#96;：指定Nginx使用的worker进程数，这里设置为1，表示只有一个worker进程。</strong></li>
+<li><strong><code>events</code>：定义Nginx处理连接的相关参数。</strong><ul>
+<li><strong><code>worker_connections 1024;</code>：指定每个worker进程的最大连接数。</strong></li>
+</ul>
+</li>
+<li><strong><code>http</code>：定义HTTP协议相关的配置。</strong><ul>
+<li><strong><code>include mime.types;</code>：包含mime.types文件，该文件定义了文件扩展名与MIME类型之间的映射关系。</strong></li>
+<li><strong><code>default_type application/json;</code>：指定默认的MIME类型为application&#x2F;json。</strong></li>
+<li><strong><code>sendfile on;</code>：启用sendfile机制，用于高效地传输文件。</strong></li>
+<li><strong><code>keepalive_timeout 65;</code>：定义客户端与服务器之间的连接超时时间。</strong></li>
+<li><strong><code>server</code>：定义一个服务器块。</strong><ul>
+<li><strong><code>listen 80;</code>：监听端口80，用于处理HTTP请求。</strong></li>
+<li><strong><code>server_name localhost;</code>：指定服务器的域名。</strong></li>
+<li><strong><code>location /</code>：定义URL路径匹配规则。</strong><ul>
+<li><strong><code>root html;</code>：指定前端项目所在的位置为html目录。</strong></li>
+</ul>
+</li>
+<li><strong><code>error_page 500 502 503 504 /50x.html;</code>：定义错误页面的处理规则。</strong></li>
+<li><strong><code>location = /50x.html</code>：指定50x.html页面的位置。</strong></li>
+<li><strong><code>server</code>块内可以定义多个<code>location</code>块，用于处理不同的URL路径。</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>第二个和第三个<code>server</code>块与第一个<code>server</code>块的配置类似，但监听的端口和指定的前端项目位置不同。此外，它们还定义了一个<code>location /api</code>块。</strong><ul>
+<li><strong><code>location /api</code>：定义URL路径匹配规则，当请求的路径以<code>/api</code>开头时，会将请求转发给<code>http://localhost:10010</code>。</strong><ul>
+<li><strong><code>rewrite /api/(.*) /$1 break;</code>：重写URL，去掉<code>/api</code>前缀。</strong></li>
+<li><strong><code>proxy_pass http://localhost:10010;</code>：将请求转发给指定的后端服务器（这里是<code>http://localhost:10010</code>）。</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>最后的注释部分是一个示例的<code>upstream</code>块，用于定义后端服务器的负载均衡。在这个配置中，两个后端服务器分别是<code>127.0.0.1:8081</code>和<code>127.0.0.1:8082</code>，并指定了它们的最大失败次数和失败超时时间。</strong></p>
+<p><strong>请注意，以上只是一个简化的Nginx配置示例，实际的配置可能会更加复杂，并根据具体需求进行调整。</strong></p>
+<p><strong>2、启动nginx</strong></p>
 <p>有很多种方法启动nginx</p>
 <p>(1)直接双击nginx.exe，双击后一个黑色的弹窗一闪而过</p>
 <p>(2)打开cmd命令窗口，切换到nginx解压目录下，输入命令 <code>nginx.exe</code> ，回车即可</p>
@@ -731,4 +834,61 @@
 <p>redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</p>
 <p>redis-server &#x2F;etc&#x2F;redis&#x2F;redis.conf</p>
 <p>指的是启动redis服务，并且使用这个路径下的redis.conf作为配置文件。</p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/">https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/27/testphotos/" title="testphotos"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">testphotos</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/11/Springsecurity%E5%85%A5%E9%97%A8/" title="Springsecurity入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Springsecurity入门</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">nginx了解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">linux下安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number"></span> <span class="toc-text">Nginx常用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number"></span> <span class="toc-text">演示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-%E5%AD%A6%E4%B9%A0"><span class="toc-number"></span> <span class="toc-text">Docker 学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E9%87%8D%E8%A6%81%E8%A7%A3%E9%87%8A"><span class="toc-number">1.</span> <span class="toc-text">docker重要解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="toc-number"></span> <span class="toc-text">Docker基础篇</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/27/testphotos/" title="testphotos">testphotos</a><time datetime="2023-09-27T12:46:43.000Z" title="发表于 2023-09-27 20:46:43">2023-09-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/19/docker%E5%AD%A6%E4%B9%A0/" title="docker学习">docker学习</a><time datetime="2023-09-19T13:24:15.000Z" title="发表于 2023-09-19 21:24:15">2023-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/11/Springsecurity%E5%85%A5%E9%97%A8/" title="Springsecurity入门">Springsecurity入门</a><time datetime="2023-09-11T14:40:54.000Z" title="发表于 2023-09-11 22:40:54">2023-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/10/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%20%E5%B5%A9%E5%B1%B1%E7%89%88/" title="Java 开发手册 嵩山版">Java 开发手册 嵩山版</a><time datetime="2023-09-10T02:03:35.000Z" title="发表于 2023-09-10 10:03:35">2023-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/06/jdk8%E6%96%B0%E7%89%B9%E6%80%A7%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/" title="jdk8新特性学习使用">jdk8新特性学习使用</a><time datetime="2023-09-06T13:03:35.000Z" title="发表于 2023-09-06 21:03:35">2023-09-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+<h1 id="一、jar包打成docker镜像"><a href="#一、jar包打成docker镜像" class="headerlink" title="一、jar包打成docker镜像"></a>一、jar包打成<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=docker%E9%95%9C%E5%83%8F&spm=1001.2101.3001.7020">docker镜像</a></h1><p>1、把服务打包成jar包</p>
+<p><img src="/2023/09/19/docker%E5%AD%A6%E4%B9%A0/Users/李开恩/AppData/Roaming/Typora/typora-user-images/image-20231014194228011.png" alt="image-20231014194228011"></p>
+<p>2、安装了docker的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=linux%E6%9C%8D%E5%8A%A1%E5%99%A8&spm=1001.2101.3001.7020">linux服务器</a><br>3、创建dockerfile文件，文件名为dockerfile，没有扩展名</p>
+<pre><code>##指定java8环境镜像
+FROM java:8
+##复制文件到容器app-springboot
+ADD sentinel1.8.6.jar /sentinel1.8.6.jar
+##声明启动端口
+EXPOSE 8858
+##配置容器启动后执行命令
+ENTRYPOINT [&quot;java&quot;,&quot;-Dserver.port=8090&quot;,&quot;-Dproject.name=sentinel-dashboard&quot;,&quot;-jar&quot;,&quot;/sentinel1.8.6.jar&quot;]
+</code></pre>
+<p>4、把jar包和dockerfile放在linux服务器的同一个目录中</p>
+<p>5、构建docker镜像</p>
+<p>docker build -t test:v1.0 .</p>
+<p>ps:   test 为镜像名称 </p>
+<pre><code>    v1.0是镜像版本  
+
+    命令的最后有个“.” 表示在当前目录下面寻找 dockerfile 文件
+</code></pre>
+<p>6、查看镜像</p>
+<p>docker images</p>
+<p>7、启动<br>docker run -d -p &lt;宿主机端口&gt;:&lt;镜像端口&gt; test:v1.0<br>(这里后来亲身实践发现后面是我理解的宿主机端口，求科普T_T)<br>8、查看容器</p>
+<h3 id="二、docker本地镜像导出"><a href="#二、docker本地镜像导出" class="headerlink" title="二、docker本地镜像导出"></a>二、docker本地镜像导出</h3><p>docker save -o 路径&#x2F;自定义名字.tar 镜像名字:tag<br>eg： docker save -o &#x2F;usr&#x2F;local&#x2F;docker_target&#x2F;userreg.tar user_mng:v1.0</p>
+<h3 id="三、docker镜像导入"><a href="#三、docker镜像导入" class="headerlink" title="三、docker镜像导入"></a>三、docker镜像导入</h3><p>以下方法未测试</p>
+<p>（1）使用 docker import 命令则可将这个镜像文件导入进来。</p>
+<p>docker import - new_hangger_server &lt; hangger_server.tar</p>
+<p>（2）执行 docker images 命令可以看到镜像确实已经导入进来了。</p>
+<h3 id="四、docker常用命令"><a href="#四、docker常用命令" class="headerlink" title="四、docker常用命令"></a>四、docker常用命令</h3><p>#关闭容器<br>docker stop 容器名称<br>#docker 查看容器日志路径命令<br>docker inspect 容器 |grep log<br>#查看容器日志<br>docker logs 6be5e81ef86d<br>#删除所有容器<br>docker  rm $(docker ps -a -q)<br>#删除所有镜像（慎重）<br>docker rmi $(docker images -q)</p>
+<h1 id="docker部署sentinel-已有jar包"><a href="#docker部署sentinel-已有jar包" class="headerlink" title="docker部署sentinel 已有jar包"></a>docker部署sentinel 已有jar包</h1><p>已有jar 包情况下  </p>
+<p>将 jar包拖拽至 linux 文件夹 </p>
+<p>并且编写 dockerfile</p>
+<pre><code class="dockerfile">##指定java8环境镜像
+##FROM java:8
+##复制文件到容器app-springboot
+##ADD sentinel1.8.6.jar /sentinel1.8.6.jar
+##声明启动端口
+##EXPOSE 8090
+##配置容器启动后执行命令
+##ENTRYPOINT [&quot;java&quot;,&quot;-Dserver.port=8090&quot;,&quot;-Dproject.name=sentinel-dashboard&quot;,&quot;-jar&quot;,&quot;/sentinel1.8.6.jar&quot;]
+
+FROM java:8
+ADD sentinel1.8.6.jar /sentinel1.8.6.jar
+EXPOSE 8090
+ENTRYPOINT [&quot;java&quot;, &quot;-Dserver.port=8090&quot;, &quot;-Dcsp.sentinel.dashboard.server=192.168.10.102:8090&quot;, &quot;-Dproject.name=sentinel-dashboard&quot;, &quot;-jar&quot;, &quot;/sentinel1.8.6.jar&quot;]
+</code></pre>
+<p>dockerfile文件注意不要用localhost</p>
+<p>192.168.10.102使用 如果使用localhost 会导致监听不到自己的程序 </p>
+<p>执行命令： </p>
+<p>​		<strong>docker build -t mysentinel:v1 .</strong></p>
+<p><strong>mysentinel 为镜像名字</strong></p>
+<pre><code>v1.0是镜像版本  
+
+命令的最后有个“.” 表示在当前目录下面寻找 dockerfile 文件
+</code></pre>
+<p>run 容器实例</p>
+<p><strong>docker run -it -p8090:8090 –name&#x3D;sentinel-dashboard  mysentinel:v1</strong> </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/">https://349264976.github.io/2023/09/19/docker%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/27/testphotos/" title="testphotos"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">testphotos</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/11/Springsecurity%E5%85%A5%E9%97%A8/" title="Springsecurity入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Springsecurity入门</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">40</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">nginx了解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="toc-number"></span> <span class="toc-text">linux下安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number"></span> <span class="toc-text">Nginx常用命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number"></span> <span class="toc-text">演示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker-%E5%AD%A6%E4%B9%A0"><span class="toc-number"></span> <span class="toc-text">Docker 学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E9%87%8D%E8%A6%81%E8%A7%A3%E9%87%8A"><span class="toc-number">1.</span> <span class="toc-text">docker重要解释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Docker%E5%9F%BA%E7%A1%80%E7%AF%87"><span class="toc-number"></span> <span class="toc-text">Docker基础篇</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81jar%E5%8C%85%E6%89%93%E6%88%90docker%E9%95%9C%E5%83%8F"><span class="toc-number"></span> <span class="toc-text">一、jar包打成docker镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81docker%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F%E5%AF%BC%E5%87%BA"><span class="toc-number">1.</span> <span class="toc-text">二、docker本地镜像导出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81docker%E9%95%9C%E5%83%8F%E5%AF%BC%E5%85%A5"><span class="toc-number">2.</span> <span class="toc-text">三、docker镜像导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">四、docker常用命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%E9%83%A8%E7%BD%B2sentinel-%E5%B7%B2%E6%9C%89jar%E5%8C%85"><span class="toc-number"></span> <span class="toc-text">docker部署sentinel 已有jar包</span></a></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/05/%E5%BE%AE%E6%9C%8D%E5%8A%A1learning/" title="微服务learning">微服务learning</a><time datetime="2023-10-05T12:54:07.000Z" title="发表于 2023-10-05 20:54:07">2023-10-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/27/testphotos/" title="testphotos">testphotos</a><time datetime="2023-09-27T12:46:43.000Z" title="发表于 2023-09-27 20:46:43">2023-09-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/19/docker%E5%AD%A6%E4%B9%A0/" title="docker学习">docker学习</a><time datetime="2023-09-19T13:24:15.000Z" title="发表于 2023-09-19 21:24:15">2023-09-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/11/Springsecurity%E5%85%A5%E9%97%A8/" title="Springsecurity入门">Springsecurity入门</a><time datetime="2023-09-11T14:40:54.000Z" title="发表于 2023-09-11 22:40:54">2023-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/10/Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%20%E5%B5%A9%E5%B1%B1%E7%89%88/" title="Java 开发手册 嵩山版">Java 开发手册 嵩山版</a><time datetime="2023-09-10T02:03:35.000Z" title="发表于 2023-09-10 10:03:35">2023-09-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
