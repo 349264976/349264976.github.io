@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>fuguangmengying | fuguangmengying</title><meta name="author" content="en"><meta name="copyright" content="en"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="毕设：固定资产管理系统开发记录day01：开发前置0.0.0：技术选型 -》 ​		前端 ：vue3+vite+element+ruoyiprovue ​		后端： springboot+mysql+redis+ruoyipromaster ​		版本控制：git  ​		仓库存储：gitee 1.0.0搭建基础环境ruoyipro后端搭建：  https:&#x2F;&#x2F;github.com&#x2F;YunaiV&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fuguangmengying">
+<meta property="og:url" content="https://349264976.github.io/2024/03/10/%E6%AF%95%E8%AE%BE%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdoc/%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="fuguangmengying">
+<meta property="og:description" content="毕设：固定资产管理系统开发记录day01：开发前置0.0.0：技术选型 -》 ​		前端 ：vue3+vite+element+ruoyiprovue ​		后端： springboot+mysql+redis+ruoyipromaster ​		版本控制：git  ​		仓库存储：gitee 1.0.0搭建基础环境ruoyipro后端搭建：  https:&#x2F;&#x2F;github.com&#x2F;YunaiV&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://349264976.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2024-03-10T15:26:01.687Z">
+<meta property="article:modified_time" content="2024-03-10T11:46:59.949Z">
+<meta property="article:author" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://349264976.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://349264976.github.io/2024/03/10/%E6%AF%95%E8%AE%BE%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdoc/%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'fuguangmengying',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-10 19:46:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_top_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="fuguangmengying"><span class="site-name">fuguangmengying</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-10T15:26:01.687Z" title="发表于 2024-03-10 23:26:01">2024-03-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-10T11:46:59.949Z" title="更新于 2024-03-10 19:46:59">2024-03-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="毕设：固定资产管理系统"><a href="#毕设：固定资产管理系统" class="headerlink" title="毕设：固定资产管理系统"></a>毕设：固定资产管理系统</h1><h2 id="开发记录day01："><a href="#开发记录day01：" class="headerlink" title="开发记录day01："></a>开发记录day01：</h2><h2 id="开发前置"><a href="#开发前置" class="headerlink" title="开发前置"></a>开发前置</h2><p><strong>0.0.0：</strong>技术选型 -》</p>
+<p>​		<strong>前端</strong> ：vue3+vite+element+ruoyiprovue</p>
+<p>​		<strong>后端</strong>： springboot+mysql+redis+ruoyipromaster</p>
+<p>​		<strong>版本控制：</strong>git </p>
+<p>​		<strong>仓库存储</strong>：gitee</p>
+<h2 id="1-0-0搭建基础环境ruoyipro"><a href="#1-0-0搭建基础环境ruoyipro" class="headerlink" title="1.0.0搭建基础环境ruoyipro"></a>1.0.0搭建基础环境ruoyipro</h2><p><strong>后端搭建：</strong></p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/YunaiV/ruoyi-vue-pro">https://github.com/YunaiV/ruoyi-vue-pro</a> 若以pro的github地址</p>
+</li>
+<li><p>使用该地址去 git clone 下载该项目</p>
+</li>
+<li><p>使用idea打开项目</p>
+</li>
+<li><p>配置maven刷新maven</p>
+</li>
+<li><p>查看目录结构修改后端配置</p>
+</li>
+<li><p>配置数据库首先初始化项目基础数据</p>
+<p>6.1 初始化数据库</p>
+<p>以mysql为例 初始化 MySQL项目使用 MySQL 存储数据，所以需要启动一个 MySQL 服务，建议使用 <strong>5.7</strong> 版本。</p>
+<p>① 创建一个名字为 <code>ruoyi-vue-pro</code> 数据库，<strong>【只要】</strong> 执行对应数据库类型的 <a target="_blank" rel="noopener" href="https://github.com/YunaiV/ruoyi-vue-pro/tree/master/sql"><code>sql</code> (opens new window)</a>目录下的 <code>ruoyi-vue-pro.sql</code> SQL 文件，进行初始化。</p>
+<p>② 默认配置下，MySQL 需要启动在 3306 端口，并且账号是 root，密码是 123456。如果不一致，需要修改 <code>application-local.yaml</code> 配置文件。</p>
+<p>6.2 初始化redis</p>
+<p>项目使用 Redis 缓存数据，所以需要启动一个 Redis 服务。默认配置下，Redis 启动在 6379 端口，不设置账号密码。如果不一致，需要修改 <code>application-local.yaml</code> 配置文件。</p>
+<p>修改完成后发现代码启动如果出现报错问题 </p>
+<p>关闭后端的多租户选项 —-后面开启</p>
+</li>
+<li><p>启动项目</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/YunaiV/ruoyi-vue-pro/blob/master/yudao-server"><code>yudao-server</code> (opens new window)</a>是后端项目，提供管理后台、用户 APP 的 RESTful API 接口。</p>
+<p><strong>后端启动项目</strong></p>
+</li>
+</ol>
+
+
+<p>至此 后端项目已经启动成功</p>
+<p><strong>前端项目启动</strong>：</p>
+<p>（如要使用vue3构建项目node版本不低于16）</p>
+<p>​		如果遇到需要存在多node环境的问题请移步此文章–》[自定义node版本，实现node多版本控制_设置node版本-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43532275/article/details/127899099">https://blog.csdn.net/qq_43532275/article/details/127899099</a></p>
+<p>node的环境变量以及各种配置 请参考–》[Node的安装与环境变量的配置_node需要配置环境变量吗-CSDN博客](<a target="_blank" rel="noopener" href="https://blog.csdn.net/cm200225/article/details/123300849">https://blog.csdn.net/cm200225/article/details/123300849</a></p>
+<p>以及<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_60870118/article/details/129727274">2023年node.js最新版(18.15.0)详细安装教程(保姆级)_node最新版本-CSDN博客</a></p>
+<p>前往ruoyipro的gitee仓库去拉去项目选取自己认为合适的<a target="_blank" rel="noopener" href="https://gitee.com/yudaocode">芋道源码: 为开源继绝学，我辈义不容辞！ (gitee.com)</a></p>
+<p>下载之后 使用vscode打开  打开一个TERMINAL 执行npm i等待成功即可</p>
+<p>依赖下载成功 执行命令 npm run dev</p>
+
+
+<p>启动之后登录如果失败 检查前后端配置 </p>
+<p>后端</p>
+
+
+<p>前端</p>
+
+
+
+
+
+
+<p>页面：</p>
+
+
+
+
+
+
+<p>至此！！！基础环境已经完成</p>
+<h1 id="Daytwo"><a href="#Daytwo" class="headerlink" title="Daytwo"></a>Daytwo</h1><p>基本数据库框架构建   </p>
+<p>含有ruoyipro的基础数据库 还有 毕设的基础数据库</p>
+<p> <a href="C:\Users\李开恩\Desktop\fixed_asset_management_system.sql">fixed_asset_management_system.sql</a> </p>
+<ol>
+<li>资产表（assets）：</li>
+</ol>
+<pre><code class="msyql">CREATE TABLE assets (
+  asset_id INT PRIMARY KEY AUTO_INCREMENT COMMENT &#39;资产ID&#39;,
+  asset_code VARCHAR(50) NOT NULL COMMENT &#39;资产编码&#39;,
+  main_asset_code VARCHAR(50) COMMENT &#39;主资产编码&#39;,
+  asset_name VARCHAR(100) NOT NULL COMMENT &#39;资产名称&#39;,
+  rfid VARCHAR(50) COMMENT &#39;RFID标签&#39;,
+  asset_category VARCHAR(50) NOT NULL COMMENT &#39;资产类别&#39;,
+  specification VARCHAR(100) COMMENT &#39;规格型号&#39;,
+  unit VARCHAR(50) COMMENT &#39;计量单位&#39;,
+  amount DECIMAL(10, 2) COMMENT &#39;数量&#39;,
+  company VARCHAR(100) COMMENT &#39;所属公司&#39;,
+  department VARCHAR(100) COMMENT &#39;所属部门&#39;,
+  user VARCHAR(100) COMMENT &#39;使用人&#39;,
+  short_region_name VARCHAR(50) COMMENT &#39;所属地区（简称）&#39;,
+  region_name VARCHAR(100) COMMENT &#39;所属地区&#39;,
+  location VARCHAR(100) COMMENT &#39;位置&#39;,
+  manager VARCHAR(100) COMMENT &#39;责任人&#39;,
+  owner_company VARCHAR(100) COMMENT &#39;归属公司&#39;,
+  purchase_date DATE COMMENT &#39;购买日期&#39;,
+  supplier VARCHAR(100) COMMENT &#39;供应商&#39;,
+  usage_period INT COMMENT &#39;使用期限&#39;,
+  source VARCHAR(100) COMMENT &#39;来源&#39;,
+  created_by VARCHAR(100) COMMENT &#39;创建人&#39;,
+  created_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT &#39;创建时间&#39;,
+  modified_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT &#39;修改时间&#39;,
+  status VARCHAR(50) COMMENT &#39;状态&#39;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=&#39;资产表&#39;;
+</code></pre>
+<ol>
+<li>入库记录表（receipts）：</li>
+</ol>
+<pre><code class="msyql">CREATE TABLE receipts (
+  receipt_id INT PRIMARY KEY AUTO_INCREMENT COMMENT &#39;入库记录ID&#39;,
+  asset_id INT NOT NULL COMMENT &#39;资产ID&#39;,
+  receipt_date DATE COMMENT &#39;入库日期&#39;,
+  receipt_quantity INT COMMENT &#39;入库数量&#39;,
+  receipt_person VARCHAR(100) COMMENT &#39;入库人&#39;,
+  FOREIGN KEY (asset_id) REFERENCES assets(asset_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=&#39;入库记录表&#39;;
+</code></pre>
+<ol>
+<li>领用记录表（issue_records）：</li>
+</ol>
+<pre><code class="msyql">CREATE TABLE issue_records (
+  issue_id INT PRIMARY KEY AUTO_INCREMENT COMMENT &#39;领用记录ID&#39;,
+  asset_id INT NOT NULL COMMENT &#39;资产ID&#39;,
+  issue_date DATE COMMENT &#39;领用日期&#39;,
+  issue_quantity INT COMMENT &#39;领用数量&#39;,
+  issue_person VARCHAR(100) COMMENT &#39;领用人&#39;,
+  FOREIGN KEY (asset_id) REFERENCES assets(asset_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=&#39;领用记录表&#39;;
+</code></pre>
+<ol>
+<li>退库记录表（return_records）：</li>
+</ol>
+<pre><code class="msyql">CREATE TABLE return_records (
+  return_id INT PRIMARY KEY AUTO_INCREMENT COMMENT &#39;退库记录ID&#39;,
+  asset_id INT NOT NULL COMMENT &#39;资产ID&#39;,
+  return_date DATE COMMENT &#39;退库日期&#39;,
+  return_quantity INT COMMENT &#39;退库数量&#39;,
+  return_person VARCHAR(100) COMMENT &#39;退库人&#39;,
+  FOREIGN KEY (asset_id) REFERENCES assets(asset_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=&#39;退库记录表&#39;;
+</code></pre>
+<ol>
+<li>借用记录表（loan_records）：</li>
+</ol>
+<pre><code class="msyql">CREATE TABLE loan_records (
+  loan_id INT PRIMARY KEY AUTO_INCREMENT COMMENT &#39;借用记录ID&#39;,
+  asset_id INT NOT NULL COMMENT &#39;资产ID&#39;,
+  loan_date DATE COMMENT &#39;借用日期&#39;,
+  loan_quantity INT COMMENT &#39;借用数量&#39;,
+  loan_person VARCHAR(100) COMMENT &#39;借用人&#39;,
+  return_date DATE COMMENT &#39;归还日期&#39;,
+  return_quantity INT COMMENT &#39;归还数量&#39;,
+  return_person VARCHAR(100) COMMENT &#39;归还人&#39;,
+  FOREIGN KEY (asset_id) REFERENCES assets(asset_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT=&#39;借用记录表&#39;;
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://349264976.github.io">en</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://349264976.github.io/2024/03/10/%E6%AF%95%E8%AE%BE%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdoc/%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">https://349264976.github.io/2024/03/10/%E6%AF%95%E8%AE%BE%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdoc/%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://349264976.github.io" target="_blank">fuguangmengying</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/10/%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info"></div></div></a></div><div class="next-post pull-right"><a href="/2023/10/30/%E8%B0%B7%E7%B2%92mall/" title="谷粒mall"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">谷粒mall</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">en</div><div class="author-info__description">漫漫长路</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">46</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">毕设：固定资产管理系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95day01%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">开发记录day01：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%89%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">开发前置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-0-0%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83ruoyipro"><span class="toc-number">1.3.</span> <span class="toc-text">1.0.0搭建基础环境ruoyipro</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Daytwo"><span class="toc-number">2.</span> <span class="toc-text">Daytwo</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/10/%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2024-03-10T15:26:28.050Z" title="发表于 2024-03-10 23:26:28">2024-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/10/%E6%AF%95%E8%AE%BE%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9Fdoc/%E6%AF%95%E8%AE%BE%EF%BC%9A%E5%9B%BA%E5%AE%9A%E8%B5%84%E4%BA%A7%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" title="无题">无题</a><time datetime="2024-03-10T15:26:01.687Z" title="发表于 2024-03-10 23:26:01">2024-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/30/%E8%B0%B7%E7%B2%92mall/" title="谷粒mall">谷粒mall</a><time datetime="2023-10-30T13:50:30.000Z" title="发表于 2023-10-30 21:50:30">2023-10-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/18/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8Eing/" title="谷粒商城ing">谷粒商城ing</a><time datetime="2023-10-18T15:09:38.000Z" title="发表于 2023-10-18 23:09:38">2023-10-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/17/RabbitMqhm/" title="RabbitMqhm">RabbitMqhm</a><time datetime="2023-10-17T14:37:58.000Z" title="发表于 2023-10-17 22:37:58">2023-10-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By en</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
